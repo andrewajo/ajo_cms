@@ -1,0 +1,22 @@
+.row-fluid
+	.span6
+		= detail_helper("Name", @company.name)
+		= detail_helper("Phone", @company.phone)
+		= detail_helper("Email", @company.email)
+		
+	.span6
+		= detail_helper("Contact", @company.contact)
+		= detail_helper("Fax", @company.fax)
+		= detail_helper("Page Title", @company.title)
+.row-fluid
+	.span6
+		= image_tag AjoCms::Company.first.logo_url(:thumb).to_s
+	.span6
+		= detail_helper("Address", @company.address)
+.row-fluid
+	.span6
+		= detail_helper("City", @company.city)
+		= detail_helper("Country", @company.country)
+	.span6
+		= detail_helper("Province", @company.province)
+		= detail_helper("Postal Code", @company.zip_code)

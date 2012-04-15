@@ -1,0 +1,10 @@
+!!! html
+%html
+%head
+	%title= AjoCms::Company.first.name + ' Admin'
+	= stylesheet_link_tag    "ajo_cms/application", :media => "all"
+	= javascript_include_tag "ajo_cms/application"
+	= csrf_meta_tags
+%body
+	.container
+		= render 'layouts/templates/' + @layout

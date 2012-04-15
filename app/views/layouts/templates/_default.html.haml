@@ -1,0 +1,19 @@
+.row-fluid
+	#header.span12
+		%b= image_tag AjoCms::Company.first.logo_url.to_s
+.navbar
+	.navbar-inner
+		.container
+			%ul.nav
+				- AjoCms::Section.all.each do |section|
+					%li= link_to section.name, "#{section.name}"
+.row-fluid	
+	.span12
+		= yield
+.row-fluid
+	.span4
+		Testing
+	.span4
+		Testing
+	.span4
+		123

@@ -1,0 +1,33 @@
+%h2=@section.name
+%h5
+	= @section.title
+
+%table.table.table-striped
+	%thead
+		%tr
+			%th Page
+			%th Title
+			%th Layout
+			%th
+			%th
+	%tbody
+		- @pages.each do |page|
+			%tr
+				%td= page.name
+				%td= page.title
+				%td= page.layout
+				%td= page.index_page == true ? 'index' : ''
+				%td.links
+					= link_to edit_page_path(page) do
+						%i.icon-edit
+					= link_to page_path(page), method: :delete, :confirm => 'Are you sure?' do
+						%i.icon-trash
+.modal-backdrop
+.modal
+	.modal-header
+		%h3
+			New Section
+	= form_for @page, :url => section_pages_path do |f|
+		.modal-body
+
+		.modal-footer

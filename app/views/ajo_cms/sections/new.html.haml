@@ -1,0 +1,13 @@
+- if @sections.count > 0
+	= render 'sections_table'
+- else
+	.alert
+		You have not added any content yet!
+.modal-backdrop
+.modal
+	.modal-header
+		%h3
+			New Section
+			= link_to sections_path do
+				%i.icon-remove
+	= render 'form'

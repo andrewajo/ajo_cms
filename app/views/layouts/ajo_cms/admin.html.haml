@@ -1,0 +1,25 @@
+!!! html
+%html
+%head
+	%title= AjoCms::Company.first.name + ' Admin'
+	= stylesheet_link_tag    "ajo_cms/application", :media => "all"
+	= javascript_include_tag "ajo_cms/application"
+	= csrf_meta_tags
+%body
+	#admin
+		.container
+			.navbar.navbar-fixed-top
+				.navbar-inner
+					.container
+						= link_to AjoCms::Company.first.name, root_url, :class => 'brand'
+						%ul.nav.actions
+							= render "actions/#{controller.controller_name}"
+			.row
+				.span2
+					%ul.nav.nav-tabs.nav-stacked
+						%li= link_to 'Content', sections_path()
+						%li= link_to 'Images'
+						%li= link_to 'Appearances'
+						%li= link_to 'Settings', company_path(1)
+				.span10
+					= yield
