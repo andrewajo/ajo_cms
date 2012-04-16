@@ -6,4 +6,5 @@
 	= javascript_include_tag "ajo_cms/application"
 	= csrf_meta_tags
 %body
-	= render 'layouts/main_templates/' + @site_layout
+	.container
+		= yield

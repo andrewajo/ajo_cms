@@ -1,0 +1,17 @@
+.modal
+	.modal-header
+		%h3 New User
+	.modal-body
+		= form_for @user do |f|
+			.field
+				= f.label :email
+				= f.text_field :email
+			.field
+				= f.label :password
+				= f.password_field :password
+			.actions
+				= f.submit "Save", :class => 'btn'
+
+
+
+

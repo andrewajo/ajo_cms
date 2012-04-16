@@ -1,5 +1,6 @@
 module AjoCms
   class SectionsController < ApplicationController
+    layout 'ajo_cms/admin'
   	def index
   		@sections = Section.all
   	end

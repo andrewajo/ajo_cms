@@ -1,5 +1,6 @@
 module AjoCms
   class CompaniesController < ApplicationController
+  	layout 'ajo_cms/admin'
 	def show
   		@company = Company.first
 	end

@@ -1,25 +1,28 @@
 = form_for @company, builder: LabelledFormBuilder, :html => {:multipart => true} do |f|
 	.row-fluid
-		.span6
+		.span4
 			= f.text_field "Name", :name
-			= f.text_field "Phone", :phone, :class => 'phone'
-			= f.text_field "Email", :email
-		.span6
-			= f.text_field "Contact", :contact
-			= f.text_field "Fax", :fax
+		.span4
 			= f.text_field "Title", :title
+		.span4
+			= f.text_field "Contact", :contact
 	.row-fluid
-		.span6
-			= f.file_field :logo
-		.span6
+		.span4
+			
+			= f.text_field "Phone", :phone
 			= f.text_field "Address", :address
-	.row-fluid
-		.span6
-			= f.text_field "City", :city
 			= f.text_field "Country", :country
-		.span6
-			= f.text_field "State", :state
+			
+		.span4
+			= f.text_field "Fax", :fax
+			= f.text_field "Province", :state
 			= f.text_field "Postal Code", :zip_code
-	.row-fluid
-		.span12
+		.span4
+			= f.text_field "Email", :email
+			= f.text_field "City", :city
+			= f.file_field :logo
+	.row
+		.span4.offset8
 			= f.submit "Save", :class => 'btn'
+			= link_to company_path do
+				%span.btn Cancel
