@@ -21,6 +21,16 @@
 			= f.text_field "Email", :email
 			= f.text_field "City", :city
 			= f.file_field :logo
+	.row-fluid
+		.span12
+			%h4 Layout 
+	%br
+	.row-fluid
+		- ['default', 'sidebar', 'header'].each do |layout|
+			.span4
+				= radio_button_tag 'company[layout]', layout, @company.layout == layout
+				= layout.capitalize
+				.thumbnail= image_tag("ajo_cms/application_#{layout}.png")
 	.row
 		.span4.offset8
 			= f.submit "Save", :class => 'btn'

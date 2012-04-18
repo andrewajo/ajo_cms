@@ -8,5 +8,4 @@
 				%ul.nav.span12
 					- @sections.each do |section|
 						%li= link_to section.name, "#{section.name}"
-	= render 'layouts/page_templates/' + @site_layout
-	
+	= render 'layouts/page_templates/' + @page_layout

@@ -26,4 +26,8 @@
 				.thumbnail
 					= image_tag AjoCms::Company.first.logo_url(:thumb).to_s, :class => 'logo'
 .row-fluid
-	.span12
+	.span4
+		%b Layout
+		%br
+		%br
+		.thumbnail= image_tag("ajo_cms/application_#{@company.layout}.png")

@@ -4,6 +4,7 @@ module AjoCms
 
   	def index
   		@company = Company.first
+      @sections = Section.order('position')
   		@section = Section.first
   		@page = @section.pages.first
   		@site_layout = Company.first.layout.nil? ? 'default' : Company.first.layout
@@ -12,6 +13,7 @@ module AjoCms
 
   	def section
   		@company = Company.first
+      @sections = Section.order('position')
   		@section = Section.where(:name => params[:section_name]).first
       @page = @section.pages.first
       @site_layout = Company.first.layout.nil? ? 'default' : Company.first.layout
