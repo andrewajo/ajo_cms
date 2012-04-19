@@ -1,1 +1,2 @@
-%li= link_to 'New Page', new_section_page_path(@section)
+- if controller.action_name == 'index'
+	%li= link_to 'New Page', new_section_page_path(@section)

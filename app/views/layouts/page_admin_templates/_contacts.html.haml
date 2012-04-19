@@ -1,0 +1,20 @@
+- @posts.each do |post|
+	%br
+	.row-fluid
+		.span1
+			= link_to edit_section_page_post_path(@section, @page, post) do
+				%span.btn.btn-mini.btn-primary Edit
+			%br
+			%br
+			= link_to do
+				%span.btn.btn-mini.btn-danger Delete
+		.span11
+			.row-fluid
+				.span3
+					.thumbnail
+						= image_tag post.image_url(:thumb).to_s
+				.span9
+					%h4= post.title
+					%br
+					= post.content
+	%br

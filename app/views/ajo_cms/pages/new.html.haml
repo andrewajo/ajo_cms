@@ -39,12 +39,18 @@
 			%br
 			%br
 			.row-fluid
-				- ['default', 'sidebar', 'header'].each do |layout|
+				- ['slider', 'text', 'gallery'].each do |layout|
 					.span4
 						= radio_button_tag 'page[layout]', layout, @page.layout == layout
 						= layout.capitalize
-						.thumbnail= image_tag("ajo_cms/application_#{layout}.png")
-		
+						.thumbnail= image_tag("ajo_cms/page_#{layout}.png")
+			%br
+			.row-fluid
+				- ['contacts', 'contact', 'blog'].each do |layout|
+					.span4
+						= radio_button_tag 'page[layout]', layout, @page.layout == layout
+						= layout.capitalize
+						.thumbnail= image_tag("ajo_cms/page_#{layout}.png")
 		.modal-footer
 			= link_to section_path(@section) do
 				%span.btn Cancel

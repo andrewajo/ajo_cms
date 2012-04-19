@@ -29,7 +29,29 @@
 			Edit Page
 			= link_to section_path(@section) do
 				%i.icon-remove
-	= form_for @page, :url => section_pages_path do |f|
+	= form_for @page, :builder => LabelledFormBuilder, :url => section_page_path(@section, @page) do |f|
 		.modal-body
-			test
+			= f.hidden_field :section_id, :value => @section.id
+			.row-fluid
+				.span6= f.text_field "Name", :name
+				.span6= f.text_field "Title", :title
+			%b Layout
+			%br
+			%br
+			.row-fluid
+				- ['slider', 'text', 'gallery'].each do |layout|
+					.span4
+						= radio_button_tag 'page[layout]', layout, @page.layout == layout
+						= layout.capitalize
+						.thumbnail= image_tag("ajo_cms/page_#{layout}.png")
+			%br
+			.row-fluid
+				- ['contacts', 'contact', 'blog'].each do |layout|
+					.span4
+						= radio_button_tag 'page[layout]', layout, @page.layout == layout
+						= layout.capitalize
+						.thumbnail= image_tag("ajo_cms/page_#{layout}.png")
 		.modal-footer
+			= link_to section_path(@section) do
+				%span.btn Cancel
+			= f.submit 'Save', :class => 'btn'

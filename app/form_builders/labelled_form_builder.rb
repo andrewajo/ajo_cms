@@ -5,9 +5,15 @@ class LabelledFormBuilder < ActionView::Helpers::FormBuilder
 		end
 	end
 
-	def submit(name, *args)
+	def text_area(name, field, *args)
 		@template.content_tag :div, class: "field" do
-			@template.tag(:br) + super(name, *args)
+			label(name) + super(field, *args)
 		end
 	end
+
+	# def submit(name, *args)
+		# @template.content_tag :div, class: "field" do
+			# super(name, *args)
+		# end
+	# end
 end

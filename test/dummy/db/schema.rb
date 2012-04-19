@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120418201613) do
+ActiveRecord::Schema.define(:version => 20120419040806) do
 
   create_table "ajo_cms_companies", :force => true do |t|
     t.string   "title"
@@ -49,6 +49,16 @@ ActiveRecord::Schema.define(:version => 20120418201613) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "position"
+  end
+
+  create_table "ajo_cms_posts", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.string   "post_type"
+    t.integer  "page_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "image"
   end
 
   create_table "ajo_cms_sections", :force => true do |t|

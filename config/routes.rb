@@ -6,7 +6,9 @@ AjoCms::Engine.routes.draw do
 	resources :sessions, :only => [:new, :create, :destroy]
 	resources :companies
 	resources :sections do
-		resources :pages
+		resources :pages do
+			resources :posts
+		end
 	end
 end
 

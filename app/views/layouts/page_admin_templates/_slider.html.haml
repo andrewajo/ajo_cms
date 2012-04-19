@@ -1,0 +1,12 @@
+.row-fluid
+	.span12
+		.carousel
+			.carousel-inner
+				- @posts.each do |post|
+					.active.item
+						= image_tag post.image_url(:slider).to_s
+						.carousel-caption
+							%h4= post.title
+							%p
+								= post.content
+								= link_to 'Edit', edit_section_pa

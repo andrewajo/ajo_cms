@@ -1,0 +1,23 @@
+.modal-header
+	%h3
+		New Contact
+		= link_to section_page_path(@section, @page) do
+			%i.icon-remove
+= form_for @post, builder: LabelledFormBuilder, :html => {:multipart => true}, :url => section_page_posts_path(@section, @page, @post) do |f|
+	.modal-body
+		.row-fluid
+			.span6
+				= f.hidden_field :page_id, :value => @page.id
+				= f.hidden_field :post_type, :value => 'contacts'
+				= f.text_field "Name", :title
+			.span6
+				.field
+					= f.label :image, "Image"
+					= f.file_field :image
+		.row-fluid
+			.span12
+				= f.text_area "Description", :content
+	.modal-footer
+		= link_to section_page_path(@section, @page) do
+			%span.btn Cancel
+		= f.submit "Save", :class => 'btn'

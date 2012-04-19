@@ -1,6 +1,8 @@
 module AjoCms
   class Page < ActiveRecord::Base
-  	belongs_to :sections
+  	has_many :posts
+  	accepts_nested_attributes_for :posts
+  	belongs_to :sections	
   	acts_as_list
   end
 end

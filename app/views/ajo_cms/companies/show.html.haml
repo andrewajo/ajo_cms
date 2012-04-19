@@ -21,11 +21,10 @@
 		= detail_helper("City", @company.city)
 		%b Logo
 		%br
-		.row-fluid
-			.span4.offset4
-				.thumbnail
-					- unless AjoCms::Company.first.logo_url(:thumb).nil?
-						= image_tag AjoCms::Company.first.logo_url(:thumb).to_s, :class => 'logo'
+		%br
+		.thumbnail
+			- unless AjoCms::Company.first.logo_url(:thumb).nil?
+				= image_tag AjoCms::Company.first.logo_url(:thumb).to_s, :class => 'logo'
 .row-fluid
 	.span4
 		%b Layout
