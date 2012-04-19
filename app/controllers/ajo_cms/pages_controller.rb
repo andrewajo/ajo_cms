@@ -12,5 +12,15 @@ module AjoCms
   		@pages = @section.pages.all
   		@page = Page.find(params[:id])
   	end
+
+    def create
+      @page = Page.new(params[:page])
+      if @page.save
+        redirect_to section_path(params[:section_id]), notice: "Page added!"
+      else
+        render :action => "new"
+      end
+    end
+
   end
 end

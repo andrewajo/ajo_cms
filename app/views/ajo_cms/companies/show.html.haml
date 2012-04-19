@@ -24,10 +24,14 @@
 		.row-fluid
 			.span4.offset4
 				.thumbnail
-					= image_tag AjoCms::Company.first.logo_url(:thumb).to_s, :class => 'logo'
+					- unless AjoCms::Company.first.logo_url(:thumb).nil?
+						= image_tag AjoCms::Company.first.logo_url(:thumb).to_s, :class => 'logo'
 .row-fluid
 	.span4
 		%b Layout
 		%br
 		%br
-		.thumbnail= image_tag("ajo_cms/application_#{@company.layout}.png")
+		.thumbnail
+			- if @company.layout.nil?
+				= image_tag("ajo_cms/application_default.png")
+			= image_tag("ajo_cms/application_#{@company.layout}.png")
