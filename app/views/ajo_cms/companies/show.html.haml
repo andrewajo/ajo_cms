@@ -22,9 +22,7 @@
 		%b Logo
 		%br
 		%br
-		.thumbnail
-			- unless AjoCms::Company.first.logo_url(:thumb).nil?
-				= image_tag AjoCms::Company.first.logo_url(:thumb).to_s, :class => 'logo'
+		
 .row-fluid
 	.span4
 		%b Layout
@@ -34,3 +32,6 @@
 			- if @company.layout.nil?
 				= image_tag("ajo_cms/application_default.png")
 			= image_tag("ajo_cms/application_#{@company.layout}.png")
+		.thumbnail
+			- unless AjoCms::Company.first.logo_url(:thumb).nil?
+				= image_tag AjoCms::Company.first.logo_url(:thumb).to_s, :class => 'logo'
