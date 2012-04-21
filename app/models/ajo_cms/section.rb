@@ -1,5 +1,7 @@
 module AjoCms
   class Section < ActiveRecord::Base
+    attr_accessible :name, :title
+
   	has_many :pages, :dependent => :destroy
   	accepts_nested_attributes_for :pages
   	before_save :create_index
