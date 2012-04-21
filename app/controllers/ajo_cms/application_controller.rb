@@ -27,6 +27,6 @@ module AjoCms
 
 	
 
-	helper_method :current_user
+	helper_method :current_user, :first_user
   end
 end

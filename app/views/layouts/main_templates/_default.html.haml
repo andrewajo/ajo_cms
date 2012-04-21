@@ -28,17 +28,29 @@
 	.push
 .footer
 	#info.container
-		- @sections.each_with_index do |section, index|
-			-if
-			.row-fluid
-				.span4
-					%h3= section.name
+		.row-fluid
+			.span8
+				- @sections.each_slice(2) do |slice|
+					.row-fluid
+						- slice.each do |section|
+							.span6
+								%h4
+									=section.name
+								%ul.page_map
+									- section.pages[1..-1].each do |page|
+										%li= page.name
 
-		.row-fluid
 			.span4
-				= @company.name
-		.row-fluid
-			.span4
-				= @company.contact
+				.row-fluid
+					.span12
+						%h4= @company.name
 				%br
-				= @company.email
+				.row-fluid
+					.span6
+						%b Contact: 
+						%br
+						= @company.contact
+					.span6
+						%b Email:
+						= @company.email
+			.span2

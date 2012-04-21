@@ -8,6 +8,7 @@ module AjoCms
   	end
 
   	def new
+      @users = User.all
   		@user = User.new
   	end
 

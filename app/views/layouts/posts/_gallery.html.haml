@@ -15,4 +15,11 @@
 = render "layouts/page_admin_templates/#{@page.layout}"
 .modal-backdrop
 .modal
-	= render "layouts/forms/#{@page.layout}"
+	.modal-header
+		%h3
+			= @post.title
+			= link_to section_page_path(@section, @page) do
+				%i.icon-remove
+	.modal-body
+		= image_tag @post.image_url(:thumb).to_s
+		= @post.content

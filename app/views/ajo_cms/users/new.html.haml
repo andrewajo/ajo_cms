@@ -1,16 +1,39 @@
+%table.table.table-striped
+	%thead
+		%tr
+			%th User
+			%th
+	- @users.each do |user|
+		%tr
+			%td
+				= user.email
+			%td.actions
+				= link_to edit_user_path(user) do
+					%i.icon-pencil
+				= link_to user_path(user), method: :delete, :confirm => "Are you sure?" do
+					%i.icon-remove
+.modal-backdrop
 .modal
 	.modal-header
-		%h3 New User
+		%h3
+			New User
+			= link_to users_path do
+				%i.icon-remove
 	.modal-body
 		= form_for @user do |f|
-			.field
-				= f.label :email
-				= f.text_field :email
-			.field
-				= f.label :password
-				= f.password_field :password
-			.actions
-				= f.submit "Save", :class => 'btn'
+			.row-fluid
+				.span6
+					.field
+						= f.label :email
+						= f.text_field :email
+				.span6
+					.field
+						= f.label :password
+						= f.password_field :password
+					.field.pull-right
+						= link_to users_path do
+							%span.btn Cancel
+						= f.submit "Save", :class => 'btn'
 
 
 

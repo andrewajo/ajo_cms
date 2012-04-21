@@ -6,4 +6,12 @@
 	= javascript_include_tag "ajo_cms/application"
 	= csrf_meta_tags
 %body
+	- if current_user
+		#preview
+			.container
+				.navbar.navbar-fixed-top
+					.navbar-inner
+						.container
+							.brand Preview
+							.pull-right.btn= link_to "Admin", root_path
 	= render 'layouts/main_templates/' + @site_layout

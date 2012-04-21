@@ -1,5 +1,6 @@
 module AjoCms
   class ViewsController < ApplicationController
+    skip_before_filter :authenticate
   	layout 'ajo_cms/public'
 
   	def index

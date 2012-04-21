@@ -6,7 +6,7 @@ module AjoCms
   	acts_as_list
 
   	def create_index
-  		self.pages.build(:index_page => true, :name => 'index')
+  		self.pages.build(:name => 'Section Page')
   		true
   	end
   end

@@ -11,6 +11,17 @@ module AjoCms
   		@post = Post.new
   	end
 
+    def show
+      @section = Section.find(params[:section_id])
+      @page = Page.find(params[:page_id])
+      @posts = @page.posts
+      @post = Post.find(params[:id])
+      @sliders = @page.posts.where(:post_type => 'slider')
+      @headlines = @page.posts.where(:post_type => 'headlines')
+      @images = @page.posts.where(:post_type => 'gallery')
+    end
+
+
   	def create
   		@post = Post.new(params[:post])
   		if @post.save

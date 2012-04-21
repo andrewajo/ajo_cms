@@ -18,7 +18,7 @@ module AjoCms
 
     def destroy
       session[:user_id] = nil
-      redirect_to root_url, :notice => "Logged out!"
+      redirect_to new_session_path, :notice => "Logged out!"
     end
   end
 end

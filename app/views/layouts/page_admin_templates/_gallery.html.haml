@@ -1,3 +1,9 @@
-.row-fluid
-	- @images.each do |image|
-		.span2.thumbnail= image_tag image.image_url(:thumb).to_s
+- @posts.each_slice(4) do |slice|
+	.row-fluid
+		- slice.each do |post|
+			.span3
+				= link_to section_page_post_path(@section, @page, post) do
+					.row-fluid
+						.span12
+							.thumbnail= image_tag post.image_url(:thumb).to_s
+	%br
