@@ -1,12 +1,41 @@
-.container
-	.row-fluid
-		#header.span12
-			%b= image_tag AjoCms::Company.first.logo_url.to_s
-	.navbar
-		.navbar-inner
+.wrapper
+	#header
+		.container
+			.row-fluid
+				.span12
+					= image_tag AjoCms::Company.first.logo_url.to_s
+		#subheader
 			.container
-				%ul.nav.span12
-					- @sections.each do |section|
-						%li= link_to section.name, "#{section.name}"
-	= render 'layouts/page_templates/' + @site_layout
-	
+				.row-fluid
+					.navbar.span12
+						%ul.nav.nav-bar
+							- @sections.each do |section|
+								%li.dropdown
+									- if controller.action_name == 'index'
+										= link_to section.name, "/#{section.name}/#{@page.name}", :class => 'dropdown-toggle', 'data-dropdown' => 'dropdown'
+										-if section.pages.count > 1
+											%ul.dropdown-menu
+												-section.pages[1..-1].each do |page|
+													%li= link_to page.name, "/#{section.name}/#{page.name}"
+									- else
+										= link_to section.name, "/#{section.name}", :class => section.pages.count > 0 ? 'dropdown-toggle' : '', 'data-dropdown' => 'dropdown'
+										- if section.pages.count > 1
+											%ul.dropdown-menu
+												-section.pages[1..-1].each do |page|
+													%li= link_to page.name, "/#{section.name}/#{page.name}"
+	#content.container
+		= render 'layouts/page_templates/' + @page_layout
+	.push
+.footer
+	#info.container
+		.row-fluid
+			- @sections.each do |section|
+
+
+		.row-fluid
+			.span4
+				= @company.name
+			.span4
+				= @company.contact
+				%br
+				= @company.email

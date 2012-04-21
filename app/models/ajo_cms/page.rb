@@ -5,4 +5,5 @@ module AjoCms
   	belongs_to :sections	
   	acts_as_list
   end
+
 end

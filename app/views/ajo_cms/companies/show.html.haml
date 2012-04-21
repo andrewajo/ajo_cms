@@ -19,7 +19,7 @@
 	.span4
 		= detail_helper("Email", @company.email)
 		= detail_helper("City", @company.city)
-		%b Logo
+		
 		%br
 		%br
 		
@@ -32,6 +32,10 @@
 			- if @company.layout.nil?
 				= image_tag("ajo_cms/application_default.png")
 			= image_tag("ajo_cms/application_#{@company.layout}.png")
+	.span4
+		%b Logo
+		%br
+		%br
 		.thumbnail
 			- unless AjoCms::Company.first.logo_url(:thumb).nil?
 				= image_tag AjoCms::Company.first.logo_url(:thumb).to_s, :class => 'logo'

@@ -11,12 +11,16 @@ module AjoCms
       @section = Section.find(params[:section_id])
       @page = Page.find(params[:id])
       @posts = @page.posts.all
+      @sliders = @page.posts.where(:post_type => 'slider')
+      @headlines = @page.posts.where(:post_type => 'headline')
+      @images = @page.posts.where(:post_type => 'gallery')
     end
 
   	def edit
   		@section = Section.find(params[:section_id])
   		@pages = @section.pages.all
   		@page = Page.find(params[:id])
+      @sliders = @page.posts.where(:post_type => 'slider')
   	end
 
     def update

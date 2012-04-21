@@ -12,13 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-carousel
+//= require bootstrap
 //= require_tree .
 
 jQuery(function($){
    $(".phone").mask("(999) 999-9999");
+   $('#myCarousel').carousel()
+   $('.dropdown-toggle').dropdown()
 });
 
-$('.carousel').carousel({
-  interval: 2000
-})

@@ -7,6 +7,9 @@ module AjoCms
       @sections = Section.order('position')
   		@section = Section.first
   		@page = @section.pages.first
+      @posts = @page.posts.all
+      @sliders = @page.posts.where(:post_type => 'slider')
+      @headlines = @page.posts.where(:post_type => 'headline')
   		@site_layout = Company.first.layout.nil? ? 'default' : Company.first.layout
       @page_layout = @page.layout.nil? ? 'default' : @page.layout
   	end
@@ -15,7 +18,10 @@ module AjoCms
   		@company = Company.first
       @sections = Section.order('position')
   		@section = Section.where(:name => params[:section_name]).first
-      @page = @section.pages.first
+      @page = params[:page_name].nil? ? @section.pages.first : @section.pages.where(:name => params[:page_name]).first
+      @posts = @page.posts
+      @sliders = @page.posts.where(:post_type => 'slider')
+      @headlines = @page.posts.where(:post_type => 'headline')
       @site_layout = Company.first.layout.nil? ? 'default' : Company.first.layout
       @page_layout = @page.layout.nil? ? 'default' : @page.layout
       if params[:page_name]

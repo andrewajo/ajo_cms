@@ -12,8 +12,8 @@
 								= post.content
 			%a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} &lsaquo;
 			%a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} &rsaquo;
-.row-fluid
-	- @headlines.each do |headline|
-		.headline.span4
+- @headlines.each do |headline|
+	.row-fluid
+		.headline.span12
 			%h3= headline.title
 			= headline.content
