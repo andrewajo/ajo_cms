@@ -28,13 +28,16 @@
 	.push
 .footer
 	#info.container
-		.row-fluid
-			- @sections.each do |section|
-
+		- @sections.each_with_index do |section, index|
+			-if
+			.row-fluid
+				.span4
+					%h3= section.name
 
 		.row-fluid
 			.span4
 				= @company.name
+		.row-fluid
 			.span4
 				= @company.contact
 				%br
