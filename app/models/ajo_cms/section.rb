@@ -1,6 +1,6 @@
 module AjoCms
   class Section < ActiveRecord::Base
-    attr_accessible :name, :title
+    attr_accessible :name, :title, :position
 
   	has_many :pages, :dependent => :destroy
   	accepts_nested_attributes_for :pages

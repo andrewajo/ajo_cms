@@ -1,6 +1,7 @@
 module AjoCms
   class Company < ActiveRecord::Base
-  	attr_accessible :logo, :name, :phone, :email, :contact, :fax, :title, :address, :city, :country, :state, :zip_code, :layout
+  	attr_accessible :logo, :name, :phone, :email, :contact, :fax, :title, :address, :city, :country, :state, :zip_code, :phone, :fax, :email, :layout
+
   	mount_uploader :logo, LogoUploader
   end
 end

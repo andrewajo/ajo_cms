@@ -1,6 +1,6 @@
 module AjoCms
   class Page < ActiveRecord::Base
-  	attr_accessible :name
+  	attr_accessible :name, :title, :layout, :section_id, :index_page, :position
   	has_many :posts
   	accepts_nested_attributes_for :posts
   	belongs_to :sections	
