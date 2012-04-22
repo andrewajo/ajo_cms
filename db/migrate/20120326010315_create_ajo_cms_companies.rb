@@ -14,7 +14,7 @@ class CreateAjoCmsCompanies < ActiveRecord::Migration
 
       t.timestamps
     end
-    AjoCms::Company.create(:name => 'AJO CMS')
+    AjoCms::Company.create(:name => 'AJO CMS', :title => '', :address => '', :city => '', :state => '', :country => '', :phone => '', :fax => '', :email => '', :zip_code => '')
   end
   
 end
