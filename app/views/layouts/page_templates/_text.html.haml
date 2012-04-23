@@ -1,17 +1,18 @@
 .row-fluid
 	.span12
-		#myCarousel.carousel.slide
-			.carousel-inner
-				- @sliders.each_with_index do |post, index|
-					.item{:class => index == 0 ? 'active' : ''}
-						= image_tag post.image_url(:slider).to_s
-						.carousel-caption
-							%h4
-								= post.title
-							%p
-								= post.content
-			%a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} &lsaquo;
-			%a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} &rsaquo;
+		.thumbnail
+			#myCarousel.carousel.slide
+				.carousel-inner
+					- @sliders.each_with_index do |post, index|
+						.item{:class => index == 0 ? 'active' : ''}
+							= image_tag post.image_url(:slider).to_s
+							.carousel-caption
+								%h4
+									= post.title
+								%p
+									= post.content
+				%a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} &lsaquo;
+				%a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} &rsaquo;
 - @headlines.each do |headline|
 	.row-fluid
 		.headline.span12
