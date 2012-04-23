@@ -23,36 +23,36 @@
 											%ul.dropdown-menu
 												-section.pages[1..-1].each do |page|
 													%li= link_to page.name, "/#{section.name}/#{page.name}"
+		.spacer
 	#content.container
 		= render 'layouts/page_templates/' + @page_layout
 	.push
 %div{:class => AjoCms::Company.first.theme.nil? ? 'default' : AjoCms::Company.first.theme }
+	.spacer
 	.footer
 		#info.container
 			.row-fluid
-				.span8
-					- @sections.each_slice(2) do |slice|
+				.span12
+					- @sections.each_slice(6) do |slice|
 						.row-fluid
 							- slice.each do |section|
-								.section_map.span6
+								.section_map.span2
 									=section.name
 									%br
 									- if section.pages.count > 0	
 										%ul.page_map
 											- section.pages[1..-1].each do |page|
 												%li= page.name
-
-				.span4
-					.row-fluid
-						.span12
-							%h4= @company.name
 					%br
-					.row-fluid
-						.span6
-							%b Contact: 
-							%br
-							= @company.contact
-						.span6
-							%b Email:
-							= @company.email
+					%br
+
+			.row-fluid
+				.span3
+					= @company.name
+				.span5
+					= @company.address + ', ' + @company.city + ', ' + @company.state + ', ' + @company.country + ' ' + @company.zip_code
 				.span2
+					Phone: 
+					= @company.phone
+				.span2
+					%a{:href => "mailto: #{@company.email}"}= @company.email
