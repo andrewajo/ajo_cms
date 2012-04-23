@@ -1,7 +1,7 @@
 module AjoCms
   class UsersController < ApplicationController
   	layout :resolve_layout
-  	
+  	before_filter :authenticate, :except => :first_user
 
   	def index
   		@users = User.all

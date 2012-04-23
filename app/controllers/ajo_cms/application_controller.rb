@@ -2,7 +2,7 @@ module AjoCms
   class ApplicationController < ActionController::Base
   	before_filter :first_user
   	before_filter :current_user
-  	before_filter :authenticate
+  	before_filter :authenticate, :except => :users
   	@@company = Company.first
 
   	
