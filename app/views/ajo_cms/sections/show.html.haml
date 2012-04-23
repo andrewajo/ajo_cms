@@ -9,14 +9,12 @@
 			%th Title
 			%th Layout
 			%th
-			%th
 	%tbody
 		- @pages.each do |page|
 			%tr
 				%td= page.name
 				%td= page.title
-				%td= page.layout
-				%td= page.index_page == true ? 'index' : ''
+				%td= page.layout.nil? ? '' : page.layout.capitalize
 				%td.links
 					= link_to section_page_path(@section, page) do
 						%i.icon-search

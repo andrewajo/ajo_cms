@@ -6,7 +6,7 @@
 				%span.btn.btn-mini.btn-primary Edit
 			%br
 			%br
-			= link_to do
+			= link_to section_page_post_path(@section, @page, post), method: :delete, :confirm => 'Are you sure?' do
 				%span.btn.btn-mini.btn-danger Delete
 		.span11
 			.row-fluid

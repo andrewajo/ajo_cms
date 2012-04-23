@@ -8,7 +8,7 @@ module AjoCms
   	acts_as_list
 
   	def create_index
-  		self.pages.build(:name => 'Section Page')
+  		self.pages.build(:name => 'Section Page', :layout => 'slider')
   		true
   	end
   end

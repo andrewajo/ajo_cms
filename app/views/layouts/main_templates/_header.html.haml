@@ -35,11 +35,12 @@
 						.row-fluid
 							- slice.each do |section|
 								.section_map.span6
-									%h5
-										=section.name
-									%ul.page_map
-										- section.pages[1..-1].each do |page|
-											%li= page.name
+									=section.name
+									%br
+									- if section.pages.count > 0	
+										%ul.page_map
+											- section.pages[1..-1].each do |page|
+												%li= page.name
 
 				.span4
 					.row-fluid

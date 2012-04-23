@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require bootstrap
 //= require_tree .
 
@@ -19,5 +20,36 @@ jQuery(function($){
    $(".phone").mask("(999) 999-9999");
    $('#myCarousel').carousel()
    $('.dropdown-toggle').dropdown()
+   $('.datepicker').datepicker()
+
+   $('.modal-backdrop').click(function() {
+   		url = $(this).data('url')
+   		window.location = url
+   })
+
+   $(document).keyup(function(e) {
+   		if (e.keyCode == 27) {
+   			url = $('.modal-backdrop').data('url')
+   			if (url != undefined) {
+   				window.location = url;
+   			}
+   		}
+
+   		if (e.keyCode == 39) {
+   			url = $('.modal-backdrop').data('next')
+   			if (url != undefined) {
+   				window.location = url;
+   			}
+   		}
+
+   		if (e.keyCode == 37) {
+   			url = $('.modal-backdrop').data('last')
+   			if (url != undefined) {
+   				window.location = url
+		   }
+   		}
+
+   })
+
 });
 

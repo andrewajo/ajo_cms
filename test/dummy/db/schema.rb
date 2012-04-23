@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120419040806) do
+ActiveRecord::Schema.define(:version => 20120423022940) do
 
   create_table "ajo_cms_companies", :force => true do |t|
     t.string   "title"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20120419040806) do
     t.string   "contact"
     t.string   "logo"
     t.string   "layout"
+    t.string   "theme"
   end
 
   create_table "ajo_cms_copies", :force => true do |t|
@@ -59,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20120419040806) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "image"
+    t.date     "date"
   end
 
   create_table "ajo_cms_sections", :force => true do |t|

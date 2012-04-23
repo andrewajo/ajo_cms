@@ -23,7 +23,6 @@
 					.container
 						%ul.nav.nav-pills.span6
 							%li{:class => controller.controller_name == 'sections' ? 'active' : ''}= link_to 'Content', sections_path()
-							%li{:class => controller.controller_name == '' ? 'active' : ''}= link_to 'Appearances'
 							%li{:class => controller.controller_name == 'companies' ? 'active' : ''}= link_to 'Settings', company_path(1)
 							%li{:class => controller.controller_name == 'users' ? 'active' : ''}= link_to 'Users', users_path
 						%ul.pull-right.nav.nav-pills

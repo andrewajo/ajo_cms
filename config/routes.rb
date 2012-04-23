@@ -15,6 +15,7 @@ AjoCms::Engine.routes.draw do
 	Rails.application.routes.draw do
 		root :to => "ajo_cms/views#index"
 		match '/:section_name/:page_name', :to => 'ajo_cms/views#section'
+		match '/:section_name/:page_name/:post_id', :to => 'ajo_cms/views#post'
 		match '/:section_name', :to => 'ajo_cms/views#section'
 	end
 	

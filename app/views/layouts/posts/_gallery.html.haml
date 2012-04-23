@@ -21,5 +21,17 @@
 			= link_to section_page_path(@section, @page) do
 				%i.icon-remove
 	.modal-body
-		= image_tag @post.image_url(:thumb).to_s
-		= @post.content
+		.row-fluid
+			.span12
+				.thumbnail= image_tag @post.image_url(:gallery).to_s
+		%br
+		.row-fluid
+			.span12
+				= @post.content
+		%br
+		.row-fluid
+			.span4.pull-right
+				= link_to edit_section_page_post_path(@section, @page, @post) do
+					%span.btn.btn-mini.btn-primary Edit
+				= link_to section_page_post_path(@section, @page, @post), method: :delete, :confirm => 'Are you sure' do
+					%span.btn.btn-mini.btn-danger Delete

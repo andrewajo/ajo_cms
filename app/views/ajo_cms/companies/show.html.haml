@@ -31,11 +31,34 @@
 		.thumbnail
 			- if @company.layout.nil?
 				= image_tag("ajo_cms/application_default.png")
-			= image_tag("ajo_cms/application_#{@company.layout}.png")
+			- else
+				= image_tag("ajo_cms/application_#{@company.layout}.png")
+	.span4
+		%b Theme
+		%br
+		%br
+		.thumbnail
+			- if @company.theme.nil?
+				.default
+					.primary
+					.secondary
+					.base
+					.polar
+			- else
+				%div{:class => @company.theme}
+					.headercolor
+					.navbarcolor
+					.slidercolor
+					.footercolor
+					.menucolor
+					.menuhovercolor
+					.bodyfontcolor
+					.menufontcolor
+
 	.span4
 		%b Logo
 		%br
 		%br
-		.thumbnail
+		.thumbnail{:class => @company.theme.nil? ? 'default' : @company.theme }
 			- unless AjoCms::Company.first.logo_url(:thumb).nil?
 				= image_tag AjoCms::Company.first.logo_url(:thumb).to_s, :class => 'logo'

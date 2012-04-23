@@ -1,0 +1,16 @@
+- @posts.each_slice(6) do |slice|
+	.row-fluid
+		- slice.each do |post|
+			.span2
+				- if controller.action_name == 'index'
+					= link_to "#{@section.name}/#{@page.name}/#{post.id}" do
+						.row-fluid
+							.span12
+								.thumbnail= image_tag post.image_url(:thumb).to_s
+				- else
+					= link_to "../../../#{@section.name}/#{@page.name}/#{post.id}" do
+						.row-fluid
+							.span12
+								.thumbnail= image_tag post.image_url(:thumb).to_s
+	%br
+= yield

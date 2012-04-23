@@ -1,7 +1,8 @@
 @import 'bootstrap'
 @import 'subnav'
 @import 'navbar'
-@import themes
+@import 'themes'
+@import 'datepicker'
 
 #admin
 	margin-top: 90px
@@ -15,6 +16,24 @@
 #subheader
 	height: 40px
 
+#sidenav ul.nav li a
+	padding-bottom: 10px
+
+#sidenav ul.nav
+	margin-bottom: 0px
+	ul.sub
+		margin-bottom: 10px
+	li.sub
+		margin-left: 5px
+
+
+.spacer
+	height: 8px
+	margin-bottom: 0px
+
+#sidenav
+	padding: 10px
+	+border-radius(3px)
 #content
 	margin-top: 40px
 
@@ -42,7 +61,11 @@ html, body
 		list-style: none
 		margin: 0px
 
-
+.section_map
+	min-height: 25px
+	margin-bottom: 10px
+	.page_map
+		font-size: 10px
 .logo
 
 //forms
@@ -85,3 +108,4 @@ a.menu:after, .dropdown-toggle:after
 ul
 	.menu-dropdown li a, .dropdown-menu li a
 		padding: 4px 15px
+

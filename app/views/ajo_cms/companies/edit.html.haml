@@ -31,6 +31,30 @@
 				= radio_button_tag 'company[layout]', layout, @company.layout == layout
 				= layout.capitalize
 				.thumbnail= image_tag("ajo_cms/application_#{layout}.png")
+	%br
+	.row-fluid
+		.span12
+			%h4 Theme
+
+	-['default', 'purple', 'black', 'midnight', 'grapefruit', 'beach'].each_slice(3) do |slice|
+		%br
+		.row-fluid
+			- slice.each do |theme|
+				.span4
+					= radio_button_tag 'company[theme]', theme, @company.theme == theme
+					= theme.capitalize
+					.thumbnail
+						%div{:class => theme}
+							.headercolor
+							.navbarcolor
+							.slidercolor
+							.footercolor
+							.menucolor
+							.menuhovercolor
+							.bodyfontcolor
+							.menufontcolor
+
+	%br
 	.row
 		.span4.offset8
 			= f.submit "Save", :class => 'btn'

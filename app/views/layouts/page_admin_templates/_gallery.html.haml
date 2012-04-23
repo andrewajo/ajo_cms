@@ -1,7 +1,7 @@
-- @posts.each_slice(4) do |slice|
+- @posts.each_slice(6) do |slice|
 	.row-fluid
 		- slice.each do |post|
-			.span3
+			.span2
 				= link_to section_page_post_path(@section, @page, post) do
 					.row-fluid
 						.span12

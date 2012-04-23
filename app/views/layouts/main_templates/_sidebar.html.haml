@@ -1,33 +1,51 @@
-.container
-	.row-fluid
-		#header.span12
-			= image_tag AjoCms::Company.first.logo_url.to_s
-	.navbar
-		.navbar-inner
-			.container
-				%ul.nav.span12
-					- @sections.each do |section|
-						%li.dropdown
-							- if controller.action_name == 'index'
-								= link_to section.name, "/#{section.name}", :class => 'dropdown-toggle', 'data-dropdown' => 'dropdown'
-								-if section.pages.count > 1
-									%ul.dropdown-menu
-										-section.pages[1..-1].each do |page|
-											%li= link_to page.name, "/#{section.name}/#{page.name}"
-							- else
-								= link_to section.name, "/#{section.name}", :class => section.pages.count > 0 ? 'dropdown-toggle' : '', 'data-dropdown' => 'dropdown'
-								- if section.pages.count > 1
-									%ul.dropdown-menu
-										-section.pages[1..-1].each do |page|
-											%li= link_to page.name, "/#{section.name}/#{page.name}"
-	= render 'layouts/page_templates/' + @page_layout
-	#footer.navbar.navbar-fixed-bottom
+.wrapper{:class => AjoCms::Company.first.theme.nil? ? 'default' : AjoCms::Company.first.theme }
+	#header
 		.container
-			.navbar-inner
-				.row-fluid
-					.span4
-						= @company.name
-					.span4
-						= @company.contact
-						%br
-						= @company.email
+			.row-fluid
+				.span12
+					= image_tag AjoCms::Company.first.logo_url.to_s
+	.spacer
+	#content.container
+		.row-fluid
+			.span2
+				#sidenav
+					%ul.nav
+						- @sections.each do |section|
+							%li
+								= link_to section.name, "/#{section.name}/#{@page.name}", :class => 'dropdown-toggle', 'data-dropdown' => 'dropdown'
+								- if @section.name.capitalize == section.name && @section.pages.count > 1
+									%ul.nav.sub
+										- @section.pages[1..-1].each do |page|
+											%li.sub= page.name
+			.span10
+				= render 'layouts/page_templates/' + @page_layout
+	.push
+%div{:class => AjoCms::Company.first.theme.nil? ? 'default' : AjoCms::Company.first.theme }
+	.footer
+		#info.container
+			.row-fluid
+				.span8
+					- @sections.each_slice(2) do |slice|
+						.row-fluid
+							- slice.each do |section|
+								.section_map.span6
+									%h4
+										=section.name
+									%ul.page_map
+										- section.pages[1..-1].each do |page|
+											%li= page.name
+
+				.span4
+					.row-fluid
+						.span12
+							%h4= @company.name
+					%br
+					.row-fluid
+						.span6
+							%b Contact: 
+							%br
+							= @company.contact
+						.span6
+							%b Email:
+							= @company.email
+				.span2

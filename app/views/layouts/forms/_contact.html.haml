@@ -1,22 +1,22 @@
 .modal-header
 	%h3
-		New Contact
+		New Slider Image
 		= link_to section_page_path(@section, @page) do
 			%i.icon-remove
-= form_for @post, builder: LabelledFormBuilder, :html => {:multipart => true}, :url => controller.action_name == 'new' ? section_page_posts_path(@section, @page, @post) : section_page_post_path(@section, @page, @post) do |f|
+= form_for @post, builder: LabelledFormBuilder, :html => {:multipart => true}, :url => section_page_posts_path(@section, @page, @post) do |f|
 	.modal-body
 		.row-fluid
 			.span6
 				= f.hidden_field :page_id, :value => @page.id
-				= f.hidden_field :post_type, :value => 'contacts'
-				= f.text_field "Name", :title
+				= f.hidden_field :post_type, :value => 'slider'
+				= f.text_field "Title", :title
 			.span6
 				.field
 					= f.label :image, "Image"
 					= f.file_field :image
 		.row-fluid
 			.span12
-				= f.text_area "Description", :content
+				= f.text_area "Caption", :content
 	.modal-footer
 		= link_to section_page_path(@section, @page) do
 			%span.btn Cancel

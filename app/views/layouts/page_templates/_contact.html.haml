@@ -14,24 +14,26 @@
 								= link_to 'Delete', section_page_post_path(@section, @page, post), method: :delete, :confirm => 'Are you sure?'
 			%a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} &lsaquo;
 			%a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} &rsaquo;
-	.span12
+.row-fluid
+	.span7
+		%br
+	.span5
 		%h3 Contact us
 		.row-fluid
-			.span6
-				.row-fluid
-					.span12
-						%h4= AjoCms::Company.first.contact
-						= 'Phone: ' + AjoCms::Company.first.phone
-						%br
-						= 'Email: ' + AjoCms::Company.first.email 
-						%br
-						%br
-				.row-fluid
-					.span12
-						%h4= AjoCms::Company.first.name
-						%br
-				.row-fluid
-					.span12
-						= AjoCms::Company.first.address
-						= AjoCms::Company.first.city + ', ' + AjoCms::Company.first.state + ', ' + AjoCms::Company.first.country
-						
+			.span12
+				%h4= AjoCms::Company.first.contact
+				= 'Phone: ' + AjoCms::Company.first.phone
+				%br
+				= 'Email: ' 
+				%a{:href => AjoCms::Company.first.email}
+					= AjoCms::Company.first.email
+				%br
+				%br
+		.row-fluid
+			.span12
+				%h4= AjoCms::Company.first.name
+				%br
+		.row-fluid
+			.span12
+				= AjoCms::Company.first.address
+				= AjoCms::Company.first.city + ', ' + AjoCms::Company.first.state + ', ' + AjoCms::Company.first.country

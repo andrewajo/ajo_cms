@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rmagick"
   s.add_dependency "bcrypt-ruby"
   s.add_dependency "acts_as_list"
+  s.add_dependency "fog"
   # s.add_dependency "jquery-rails"
 
   s.add_development_dependency "sqlite3"
