@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = AjoCms::VERSION
   s.authors     = ["Andrew Joe"]
   s.email       = ["andrew@ajoconsulting.com"]
-  s.homepage    = "www.ajoconsulting.com"
+  s.homepage    = "http://www.ajoconsulting.com"
   s.summary     = "AjoCms is a lightweight cms for rails"
   s.description = "Delivers a quick and flexible backend solution for small websites"
 
