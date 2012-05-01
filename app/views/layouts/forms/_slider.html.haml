@@ -1,7 +1,7 @@
 - if params[:type] == 'slider'
 	.modal-header
 		%h3
-			New Slider Image
+			= controller.action_name.capitalize + ' Slider Image'
 			= link_to section_page_path(@section, @page) do
 				%i.icon-remove
 	= form_for @post, builder: LabelledFormBuilder, :html => {:multipart => true}, :url => controller.action_name == 'new' ? section_page_posts_path(@section, @page, @post) : section_page_post_path(@section, @page, @post) do |f|
@@ -25,7 +25,7 @@
 - elsif params[:type] == 'headline'
 	.modal-header
 		%h3
-			New Headline
+			= controller.action_name.capitalize + ' Headline'
 			= link_to section_page_path(@section, @page) do
 				%i.icon-remove
 	= form_for @post, builder: LabelledFormBuilder, :html => {:multipart => true}, :url => section_page_posts_path(@section, @page, @post) do |f|

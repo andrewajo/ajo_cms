@@ -13,6 +13,7 @@
 	#actions.span12
 		= render "layouts/page_admin_actions/#{@page.layout}"	
 = render "layouts/page_admin_templates/#{@page.layout}"
+= @page.layout
 .modal-backdrop
 .modal
 	= render "layouts/forms/#{@page.layout}"
