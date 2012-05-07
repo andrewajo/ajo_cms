@@ -1,4 +1,10 @@
 %ul.nav.nav-pills
 	%li
-		= link_to new_section_page_post_path(@section, @page) do
+		= link_to new_section_page_post_path(@section, @page, :type => 'blog') do
 			%span.btn New Post
+	%li
+	= link_to new_section_page_post_path(@section, @page, :type => 'headline') do
+		%span.btn Add Text
+	%li
+		= link_to new_section_page_post_path(@section, @page, :type => 'attachment') do
+			%span.btn Add Attachment
