@@ -8,8 +8,12 @@ AjoCms::Engine.routes.draw do
 	match 'logout' => 'sessions#destroy', :as => 'logout'
 	resources :companies
 	resources :sections do
+		collection { post :sort }
 		resources :pages do
-			resources :posts
+			collection { post :sort }
+			resources :posts do
+				collection { post :sort }
+			end
 		end
 	end
 	Rails.application.routes.draw do

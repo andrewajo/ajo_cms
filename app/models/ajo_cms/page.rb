@@ -4,7 +4,8 @@ module AjoCms
   	has_many :posts
   	accepts_nested_attributes_for :posts
   	belongs_to :sections	
-  	acts_as_list
+  	acts_as_list :scope => :section
+  	default_scope order('position ASC')
   end
 
 end

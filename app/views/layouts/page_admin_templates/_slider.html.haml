@@ -21,4 +21,4 @@
 				= headline.title
 				= link_to 'Edit', edit_section_page_post_path(@section, @page, headline, :type => 'headline')
 				= link_to 'Delete', section_page_post_path(@section, @page, headline), method: :delete, :confirm => 'Are you sure?'
-			= headline.content
+			= simple_format(headline.content)

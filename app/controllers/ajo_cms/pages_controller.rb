@@ -14,6 +14,7 @@ module AjoCms
       @sliders = @page.posts.where(:post_type => 'slider')
       @headlines = @page.posts.where(:post_type => 'headline')
       @images = @page.posts.where(:post_type => 'gallery')
+      @files = @page.posts.where(:post_type => 'attachment')
     end
 
   	def edit
@@ -35,6 +36,12 @@ module AjoCms
       end
     end
 
+    def sort
+      params[:page].each_with_index do |id, index|
+        Page.update_all({position: index+1}, {id: id})
+      end
+      render nothing: true
+    end
 
     def create
       @page = Page.new(params[:page])

@@ -8,6 +8,7 @@ module AjoCms
       @sliders = @page.posts.where(:post_type => 'slider')
       @headlines = @page.posts.where(:post_type => 'headlines')
       @images = @page.posts.where(:post_type => 'gallery')
+      @files = @page.posts.where(:post_type => 'attachment')
   		@post = Post.new
   	end
 
@@ -18,6 +19,7 @@ module AjoCms
       @sliders = @page.posts.where(:post_type => 'slider')
       @headlines = @page.posts.where(:post_type => 'headlines')
       @images = @page.posts.where(:post_type => 'gallery')
+      @files = @page.posts.where(:post_type => 'attachment')
       @post = Post.find(params[:id])
     end
 

@@ -12,6 +12,7 @@ module AjoCms
       @sliders = @page.posts.where(:post_type => 'slider')
       @images = @page.posts.where(:post_type => 'gallery')
       @headlines = @page.posts.where(:post_type => 'headline')
+      @files = @page.posts.where(:post_type => 'attachment')
   		@site_layout = Company.first.layout.nil? ? 'default' : Company.first.layout
       @page_layout = @page.layout.nil? ? 'default' : @page.layout
   	end
@@ -25,6 +26,7 @@ module AjoCms
       @sliders = @page.posts.where(:post_type => 'slider')
       @images = @page.posts.where(:post_type => 'gallery')
       @headlines = @page.posts.where(:post_type => 'headline')
+      @files = @page.posts.where(:post_type => 'attachment')
       @site_layout = Company.first.layout.nil? ? 'default' : Company.first.layout
       @page_layout = @page.layout.nil? ? 'default' : @page.layout
       if params[:page_name]

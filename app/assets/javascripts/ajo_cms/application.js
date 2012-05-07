@@ -21,6 +21,13 @@ jQuery(function($){
    $('#myCarousel').carousel()
    $('.dropdown-toggle').dropdown()
    $('.datepicker').datepicker()
+   $('tbody.sort').sortable({
+         axis: 'y',
+         helper: fixHelper,
+         update: function() {
+            return $.post($(this).data('update-url'), $(this).sortable('serialize'))
+         }
+   })
 
    $('.modal-backdrop').click(function() {
    		url = $(this).data('url')
@@ -53,3 +60,13 @@ jQuery(function($){
 
 });
 
+var fixHelper;
+fixHelper = function(e, tr) {
+  var $helper, $originals;
+  $originals = tr.children();
+  $helper = tr.clone();
+  $helper.children().each(function(index) {
+    return $(this).width($originals.eq(index).width());
+  });
+  return $helper;
+};

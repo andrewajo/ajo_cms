@@ -9,9 +9,9 @@
 			%th Title
 			%th Layout
 			%th
-	%tbody
+	%tbody.sort{'data-update-url' => sort_section_pages_url(@section)}
 		- @pages.each do |page|
-			%tr
+			= content_tag_for :tr, page do
 				%td= page.name
 				%td= page.title
 				%td= page.layout.nil? ? '' : page.layout.capitalize

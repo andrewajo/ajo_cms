@@ -30,6 +30,13 @@ module AjoCms
   		end
   	end
 
+    def sort
+      params[:section].each_with_index do |id, index|
+        Section.update_all({position: index+1}, {id: id})
+      end
+      render nothing: true
+    end
+
   	def update
   		@section = Section.find(params[:id])
   		if @section.update_attributes(params[:section])

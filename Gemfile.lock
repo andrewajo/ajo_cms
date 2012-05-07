@@ -10,8 +10,10 @@ PATH
   specs:
     ajo_cms (0.0.1)
       acts_as_list
+      acts_as_list
       bcrypt-ruby
       bootstrap-sass
+      bourbon
       carrierwave
       fog
       haml
@@ -53,6 +55,8 @@ GEM
     archive-tar-minitar (0.5.2)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
+    bourbon (1.4.0)
+      sass (>= 3.1)
     builder (3.0.0)
     carrierwave (0.6.2)
       activemodel (>= 3.2.0)
@@ -129,7 +133,7 @@ GEM
     ruby-hmac (0.4.0)
     ruby_core_source (0.1.5)
       archive-tar-minitar (>= 0.5.2)
-    sass (3.1.16)
+    sass (3.1.17)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
