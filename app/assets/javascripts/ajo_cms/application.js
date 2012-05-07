@@ -29,7 +29,7 @@ jQuery(function($){
          }
    })
 
-   $('.modal-backdrop').click(function() {
+   $('.modal-backdrop:not(.admin)').click(function() {
    		url = $(this).data('url')
    		window.location = url
    })
