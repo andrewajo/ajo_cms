@@ -45,6 +45,7 @@ module AjoCms
       @posts = @page.posts
       @post = Post.find(params[:post_id])
       @sliders = @page.posts.where(:post_type => 'slider')
+      @images = @page.posts.where(:post_type => 'gallery')
       @headlines = @page.posts.where(:post_type => 'headline')
       @site_layout = Company.first.layout.nil? ? 'default' : Company.first.layout
       @page_layout = @page.layout.nil? ? 'default' : @page.layout
