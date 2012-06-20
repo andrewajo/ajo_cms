@@ -3,8 +3,6 @@
 %head
 	%title= AjoCms::Company.first.name + ' Admin'
 	= stylesheet_link_tag    "ajo_cms/application", :media => "all"
-	/[if lt IE 9]
-		= stylesheet_link_tag 'ie'
 	= javascript_include_tag "ajo_cms/application"
 	= csrf_meta_tags
 %body
