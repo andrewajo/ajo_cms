@@ -30,17 +30,17 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :large do
-    process :resize_to_limit => [525, 525]
+    process :resize_to_limit => [529, 529]
   end
 
   def crop
     if model.crop_x.present?
-      resize_to_limit(1080, 1080)
+      resize_to_fit(1080, 1080)
       manipulate! do |img|
-        x = model.crop_x.to_i * 1080 / 525
-        y = model.crop_y.to_i * 1080 / 525
-        w = model.crop_w.to_i * 1080 / 525
-        h = model.crop_h.to_i * 1080 / 525
+        x = model.crop_x.to_i * 1080 / 529
+        y = model.crop_y.to_i * 1080 / 529
+        w = model.crop_w.to_i * 1080 / 529
+        h = model.crop_h.to_i * 1080 / 529
         img.crop!(x, y, w, h)
       end
     end
@@ -48,7 +48,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   version :slider do
     process :crop
-    process :resize_to_fill => [940, 400]
+    process :resize_to_fit => [930, 400]
   end
   version :thumb do
     process :resize_to_fit => [250, 250]
