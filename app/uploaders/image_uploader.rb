@@ -29,14 +29,32 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
+  version :large do
+    process :resize_to_limit => [525, 525]
+  end
+
+  def crop
+    if model.crop_x.present?
+      resize_to_limit(1080, 1080)
+      manipulate! do |img|
+        x = model.crop_x.to_i * 1080 / 525
+        y = model.crop_y.to_i * 1080 / 525
+        w = model.crop_w.to_i * 1080 / 525
+        h = model.crop_h.to_i * 1080 / 525
+        img.crop!(x, y, w, h)
+      end
+    end
+  end
+
   version :slider do
-    process :resize_to_fill => [1080, 400]
+    process :crop
+    process :resize_to_fill => [940, 400]
   end
   version :thumb do
     process :resize_to_fill => [250, 250]
   end
   version :gallery do
-    process :resize_to_fit => [560, 560]
+    process :resize_to_fit => [400, 400]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

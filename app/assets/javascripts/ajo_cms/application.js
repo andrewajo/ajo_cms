@@ -60,6 +60,30 @@ jQuery(function($){
 
 });
 
+var ImageCropper;
+var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+jQuery(function() {
+  return new ImageCropper();
+});
+ImageCropper = (function() {
+  function ImageCropper() {
+    this.update = __bind(this.update, this);    $('#cropbox').Jcrop({
+      aspectRatio: 2.7,
+      setSelect: [0, 0, 200, 540],
+      onSelect: this.update,
+      onChange: this.update
+    });
+  }
+  ImageCropper.prototype.update = function(coords) {
+    $('#post_crop_x').val(coords.x);
+    $('#post_crop_y').val(coords.y);
+    $('#post_crop_w').val(coords.w);
+    return $('#post_crop_h').val(coords.h);
+  };
+  return ImageCropper;
+})();
+
+
 var fixHelper;
 fixHelper = function(e, tr) {
   var $helper, $originals;

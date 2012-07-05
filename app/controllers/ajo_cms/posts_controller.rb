@@ -38,9 +38,22 @@ module AjoCms
 
 
   	def create
+      @section = Section.find(params[:section_id])
+      @page = Page.find(params[:page_id])
+      @posts = @page.posts
+      @sliders = @page.posts.where(:post_type => 'slider')
+      @headlines = @page.posts.where(:post_type => 'headlines')
+      @images = @page.posts.where(:post_type => 'gallery')
+      @files = @page.posts.where(:post_type => 'attachment')
+      @blogs = @page.posts.where(:post_type => 'blogs')
   		@post = Post.new(params[:post])
+
   		if @post.save
-  			redirect_to section_page_path(params[:section_id], params[:page_id]), notice: 'Post created!'
+        if params[:post][:image].present? && (params[:post_type] == 'slider' || params[:post_type == 'text'])
+          render :crop
+        else
+          redirect_to section_page_path(params[:section_id], params[:page_id]), notice: 'Post created!'
+        end
   		else
   			render 'new'
   		end

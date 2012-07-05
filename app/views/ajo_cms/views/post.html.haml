@@ -1,5 +1,5 @@
 .modal-backdrop{'data-url' => "../../#{@section.name}/#{@page.name}", 'data-next' => @post.next.nil? ? nil : "../../#{@section.name}/#{@page.name}/#{@post.next.id}", 'data-last' => @post.last.nil? ? nil : "../../#{@section.name}/#{@page.name}/#{@post.last.id}"}
-.modal
+.modal.gallery
 	.thumbnail
 		= image_tag @post.image_url(:gallery).to_s
 		%br
