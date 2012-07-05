@@ -49,7 +49,7 @@ module AjoCms
   		@post = Post.new(params[:post])
 
   		if @post.save
-        if params[:post][:image].present? && (params[:post_type] == 'slider' || params[:post_type == 'text'])
+        if params[:post][:image].present? && (params[:post][:post_type] == 'slider' || params[:post][:post_type == 'text'])
           render :crop
         else
           redirect_to section_page_path(params[:section_id], params[:page_id]), notice: 'Post created!'
