@@ -7,6 +7,11 @@ module AjoCms
   		@users = User.all
   	end
 
+    def edit
+      @users = User.all
+      @user = User.find(params[:id])
+    end
+
   	def new
       @users = User.all
   		@user = User.new
@@ -28,6 +33,16 @@ module AjoCms
   			render "new"
   		end
   	end
+
+    def update
+      @user = User.find(params[:id])
+
+      if @user.update_attributes(params[:user])
+        redirect_to users_path, notice: "User updated"
+      else
+        render :action => :edit
+      end
+    end
 
   	private
 
