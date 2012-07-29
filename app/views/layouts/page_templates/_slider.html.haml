@@ -1,19 +1,19 @@
 - if @sliders.count > 0
 	.row-fluid
 		.span12
-			.thumbnail
-				#myCarousel.carousel.slide
-					.carousel-inner
-						- @sliders.each_with_index do |post, index|
-							.item{:class => index == 0 ? 'active' : ''}
-								= image_tag post.image_url(:slider).to_s
+			#myCarousel.carousel.slide
+				.carousel-inner
+					- @sliders.each_with_index do |post, index|
+						.item{:class => index == 0 ? 'active' : ''}
+							= image_tag post.image_url(:slider).to_s
+							- if post.title? || post.content
 								.carousel-caption
 									%h4
 										= post.title
 									%p
 										= post.content
-					%a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} &lsaquo;
-					%a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} &rsaquo;
+				%a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} &lsaquo;
+				%a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} &rsaquo;
 .row-fluid
 	- @headlines.each do |headline|
 		.headline.span4
