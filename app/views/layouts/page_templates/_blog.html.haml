@@ -7,11 +7,14 @@
 			%h4= post.date
 			%br
 		.row-fluid
-			.span9
-				= post.content
-				
-			.span3
-				.thumbnail
-					- if post.image_url(:thumb).to_s != ''
+			- if post.image_url(:thumb).to_s != ''
+				.span9
+					= post.content
+					
+				.span3
+					.thumbnail
 						= image_tag post.image_url(:thumb).to_s
+			- else
+				.span12
+					= post.content
 	%br
