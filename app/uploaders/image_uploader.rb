@@ -30,20 +30,28 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :large do
-    process :resize_to_limit => [529, 529]
+    process :resize_to_limit => [950, 950]
   end
 
   def crop
     if model.crop_x.present?
-      #resize_to_fit(1080, 1080)
       @width = `identify -format "%wx%h" #{model.image.file.path}`.split(/x/)[0].to_i
       @height = `identify -format "%wx%h" #{model.image.file.path}`.split(/x/)[1].to_i
-      Rails.logger.debug "#{@width}, #{@height}"
+      Rails.logger.debug " Dimensions #{@width}, #{@height}"
+      #resize_to_fit(@width, @height)
       manipulate! do |img|
-        x = model.crop_x.to_i * 940 / @width
-        y = model.crop_y.to_i * 247 / @height
-        w = model.crop_w.to_i * 940/ @width
-        h = model.crop_h.to_i * 247 / @height
+        Rails.logger.debug "Crop x: #{model.crop_x} Crop y: #{model.crop_y} Crop w: #{model.crop_w} Crop h: #{model.crop_h}"
+        if @width > 940
+          x = model.crop_x.to_i / 940 * @width
+          y = model.crop_y.to_i / 247 * @height
+          w = model.crop_w.to_i / 940 * @width
+          h = model.crop_h.to_i / 247 * @height
+        else
+          x = model.crop_x.to_i * 940 / @width
+          y = model.crop_y.to_i * 247 / @height
+          w = model.crop_w.to_i * 940 / @width
+          h = model.crop_h.to_i * 247 / @height
+        end
         img.crop!(x, y, w, h)
       end
     end
