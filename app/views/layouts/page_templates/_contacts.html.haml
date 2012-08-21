@@ -1,15 +1,19 @@
+%br
+%br
 - @posts.each_slice(2) do |slice|
 	.row-fluid
 		-slice.each do |post|
-			.span6
+			.span5
 				.row-fluid
-					.span4
-						.thumbnail
-							= image_tag post.image_url(:thumb).to_s
-					.span8
+					.span12
 						%h4= post.title
+				.row-fluid
+					.span12
+						#contactdescription
+							.thumbnail.span4
+								= image_tag post.image_url(:thumb).to_s
+							= post.content
 						%br
-						= post.content
 						%br
 						%br
-						%br
+			.span1
