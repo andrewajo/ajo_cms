@@ -35,12 +35,15 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   def crop
     if model.crop_x.present?
-      resize_to_fit(1080, 1080)
+      #resize_to_fit(1080, 1080)
+      @width = `identify -format "%wx%h" #{model.image.file.path}`.split(/x/)[0].to_i
+      @height = `identify -format "%wx%h" #{model.image.file.path}`.split(/x/)[1].to_i
+      Rails.logger.debug "#{@width}, #{@height}"
       manipulate! do |img|
-        x = model.crop_x.to_i * 1080 / 529
-        y = model.crop_y.to_i * 1080 / 529
-        w = model.crop_w.to_i * 1080 / 529
-        h = model.crop_h.to_i * 1080 / 529
+        x = model.crop_x.to_i * 940 / @width
+        y = model.crop_y.to_i * 247 / @height
+        w = model.crop_w.to_i * 940/ @width
+        h = model.crop_h.to_i * 247 / @height
         img.crop!(x, y, w, h)
       end
     end
@@ -48,7 +51,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   version :slider do
     process :crop
-    process :resize_to_fit => [930, 250]
+    process :resize_to_fill => [940, 247]
   end
   version :thumb do
     process :resize_to_fit => [250, 250]
