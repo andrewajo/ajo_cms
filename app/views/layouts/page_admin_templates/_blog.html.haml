@@ -32,10 +32,10 @@
 			.row-fluid
 				- if post.image_url(:thumb).nil?
 					.span12
-						= post.content
+						= post.content.html_safe
 				- else
 					.span9
-						= post.content
+						= post.content.html_safe
 						
 					.span3
 						.thumbnail
