@@ -68,8 +68,8 @@ jQuery(function() {
 ImageCropper = (function() {
   function ImageCropper() {
     this.update = __bind(this.update, this);    $('#cropbox').Jcrop({
-      aspectRatio: 3.72,
-      setSelect: [0, 0, 200, 540],
+      aspectRatio: 3.80566,
+      setSelect: [0, 0, 136.6385, 520],
       onSelect: this.update,
       onChange: this.update
     });

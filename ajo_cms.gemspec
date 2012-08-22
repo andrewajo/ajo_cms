@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency "sass-rails"
   s.add_dependency "bootstrap-sass"
   s.add_dependency "carrierwave"
-  s.add_dependency "rmagick"
+  s.add_dependency "mini_magick"
   s.add_dependency "bcrypt-ruby"
   s.add_dependency "acts_as_list"
   s.add_dependency "fog"

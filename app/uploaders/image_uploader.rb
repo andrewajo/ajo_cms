@@ -3,8 +3,8 @@
 class ImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
-  include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  # include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   #storage :file
@@ -30,36 +30,32 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :large do
-    process :resize_to_limit => [950, 950]
+    process :resize_to_limit => [520, 520]
   end
 
   def crop
     if model.crop_x.present?
-      @width = `identify -format "%wx%h" #{model.image.file.path}`.split(/x/)[0].to_i
-      @height = `identify -format "%wx%h" #{model.image.file.path}`.split(/x/)[1].to_i
-      Rails.logger.debug " Dimensions #{@width}, #{@height}"
+      @width = `identify -format "%wx%h" #{model.image.large.file.path}`.split(/x/)[0].to_i
+      @height = `identify -format "%wx%h" #{model.image.large.file.path}`.split(/x/)[1].to_i
+      @regularwidth = `identify -format "%wx%h" #{model.image.file.path}`.split(/x/)[0].to_i
+      @regularheight = `identify -format "%wx%h" #{model.image.file.path}`.split(/x/)[1].to_i
       #resize_to_fit(@width, @height)
+      Rails.logger.debug "Crop x: #{model.crop_x} Crop y: #{model.crop_y} Crop w: #{model.crop_w} Crop h: #{model.crop_h}"
+      Rails.logger.debug "Width: #{@width}, Height: #{@height}, RegWidth: #{@regularwidth}, RegHeight: #{@regularheight}"
       manipulate! do |img|
-        Rails.logger.debug "Crop x: #{model.crop_x} Crop y: #{model.crop_y} Crop w: #{model.crop_w} Crop h: #{model.crop_h}"
-        if @width > 940
-          x = model.crop_x.to_i / 940 * @width
-          y = model.crop_y.to_i / 247 * @height
-          w = model.crop_w.to_i / 940 * @width
-          h = model.crop_h.to_i / 247 * @height
-        else
-          x = model.crop_x.to_i * 940 / @width
-          y = model.crop_y.to_i * 247 / @height
-          w = model.crop_w.to_i * 940 / @width
-          h = model.crop_h.to_i * 247 / @height
-        end
-        img.crop!(x, y, w, h)
+        x = model.crop_x.to_i * @regularwidth / @width
+        y = model.crop_y.to_i * @regularwidth / @height
+        w = model.crop_w.to_i * @regularwidth / @width
+        h = model.crop_h.to_i * @regularwidth / @height
+        img.crop "#{w}x#{h}+#{x}+#{y}"
+        img
       end
     end
   end
 
   version :slider do
     process :crop
-    process :resize_to_fill => [940, 247]
+    process :resize_to_fill => [940, 243]
   end
   version :thumb do
     process :resize_to_fit => [250, 250]
@@ -68,16 +64,16 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :resize_to_fit => [350, 350]
   end
 
-  # Add a white list of extensions which are allowed to be uploaded.
-  # For images you might use something like this:
-  # def extension_white_list
-  #   %w(jpg jpeg gif png)
-  # end
-
-  # Override the filename of the uploaded files:
-  # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+   #Add a white list of extensions which are allowed to be uploaded.
+   #For images you might use something like this:
+   #def extension_white_list
+   #  %w(jpg jpeg gif png)
+   #end
+#
+   #Override the filename of the uploaded files:
+   #Avoid using model.id or version_name here, see uploader/store.rb for details.
+   #def filename
+   #  "something.jpg" if original_filename
+   #end
 
 end
