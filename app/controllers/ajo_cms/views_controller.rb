@@ -22,9 +22,9 @@ module AjoCms
   		@company = Company.first
       @sections = Section.order('position')
   		@section = Section.where(:name => params[:section_name]).first
-      @page = @section.pages.where(:name => params[:page_name].strip).first
+      @page = @section.pages.where(:name => params[:page_name]).first
       if @page.nil?
-        @page = @section.pages.where(:name => params[:page_name].strip).first
+        @page = @section.pages.first
       end
       @posts = @page.posts
       @sliders = @page.posts.where(:post_type => 'slider')
