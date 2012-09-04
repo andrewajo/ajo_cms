@@ -54,6 +54,6 @@
 									- if section.pages.count > 0	
 										%ul.page_map
 											- section.pages[1..-1].each do |page|
-												%li= link_to page.name, "/#{section.name}/#{@page.name}"
+												%li= link_to page.name, "/#{section.name}/#{page.name}"
 
 			
