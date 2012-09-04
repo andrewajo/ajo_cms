@@ -48,7 +48,7 @@
 					- @sections.each_slice(@sections.count) do |slice|
 						.row-fluid
 							- slice.each do |section|
-								.section_map{:style => "min-width: #{90/@sections.count}%; max-width: #{99/(@sections.count)}%; display: inline-block; float: left"}
+								.section_map{:style => "min-width: #{90/@sections.count}%; max-width: #{110/(@sections.count)}%; display: inline-block; float: left"}
 									=section.name
 									%br
 									- if section.pages.count > 0	
