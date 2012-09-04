@@ -49,11 +49,11 @@
 						.row-fluid
 							- slice.each do |section|
 								.section_map{:style => "min-width: #{80/@sections.count}%; max-width: #{105/(@sections.count)}%; display: inline-block; float: left; padding-right: 20px"}
-									= link_to section.name, "/#{section.name}/#{@page.name}"
+									= link_to section.name, "/#{section.name}/#{@section.pages.first.name}"
 									%br
 									- if section.pages.count > 0	
 										%ul.page_map
 											- section.pages[1..-1].each do |page|
-												%li= link_to section.name, "/#{section.name}/#{@page.name}"
+												%li= link_to page.name, "/#{section.name}/#{@page.name}"
 
 			
