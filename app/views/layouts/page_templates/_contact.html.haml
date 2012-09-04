@@ -10,7 +10,7 @@
 								%h4
 									= post.title
 								%p
-									= post.content.html_safe
+									= post.content.nil? ? post.content : post.content.html_safe
 									= link_to 'Edit', edit_section_page_post_path(@section, @page, post)
 									= link_to 'Delete', section_page_post_path(@section, @page, post), method: :delete, :confirm => 'Are you sure?'
 				%a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} &lsaquo;

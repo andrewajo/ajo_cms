@@ -9,12 +9,12 @@
 		.row-fluid
 			- if post.image_url(:thumb).to_s != ''
 				.span9
-					= post.content.html_safe
+					= post.content.nil? ? post.content : post.content.html_safe
 					
 				.span3
 					.thumbnail
 						= image_tag post.image_url(:thumb).to_s
 			- else
 				.span12
-					= post.content.html_safe
+					= post.content.nil? ? post.content : post.content.html_safe
 	%br

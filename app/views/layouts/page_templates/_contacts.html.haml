@@ -12,6 +12,6 @@
 						#contactdescription
 							.thumbnail.span4
 								= image_tag post.image_url(:thumb).to_s
-							= post.content.html_safe
+							= post.content.nil? ? post.content : post.content.html_safe
 						%br
 						%br
