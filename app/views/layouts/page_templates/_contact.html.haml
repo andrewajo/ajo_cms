@@ -21,7 +21,8 @@
 	%br
 .row-fluid
 	.span7
-		%br
+		.thumbnail
+			%iframe{:frameborder => "0", :height => "350", :marginheight => "0", :marginwidth => "0", :scrolling => "no", :src => "http://maps.google.ca/maps?q=#{AjoCms::Company.first.address},+#{AjoCms::Company.first.city},+#{AjoCms::Company.first.province},+#{AjoCms::Company.first.country}&ie=UTF8&hq=&hnear=#{AjoCms::Company.first.address},+#{AjoCms::Company.first.city},+#{AjoCms::Company.first.province},+#{AjoCms::Company.first.zip_code}&iwloc=&amp&gl=ca&t=m&z=14&output=embed", :width => "530"}
 	.span5
 		%h3 Contact us
 		.row-fluid
