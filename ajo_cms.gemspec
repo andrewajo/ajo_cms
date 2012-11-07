@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 3.2.0"
   s.add_dependency "haml"
   s.add_dependency "sass-rails"
-  s.add_dependency "bootstrap-sass", :git => 'git://github.com/thomas-mcdonald/bootstrap-sass.git', :branch => '2.0.3'
+  s.add_dependency "bootstrap-sass", "~> 2.0.3"
   s.add_dependency "carrierwave"
   s.add_dependency "mini_magick"
   s.add_dependency "bcrypt-ruby"
