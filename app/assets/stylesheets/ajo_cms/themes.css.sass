@@ -10,9 +10,16 @@
 		background: $spacercolor
 
 	#subheader, #sidenav
-		+background-image(linear-gradient($navbar, $navbar * 0.85))
-		+linear-gradient($navbar, $navbar * 0.85)
-		background: $navbar
+		min-height: $navbarHeight
+		padding-left:  20px
+		padding-right: 20px
+		@include gradient-vertical($navbar + #242424, $navbar)
+		border: 1px solid $navbar
+		@include box-shadow(#{0 1px 4px rgba(0,0,0,.065)})
+
+		// Prevent floats from breaking the navbar
+		@include clearfix()
+
 
 	#sidenav ul.nav li a
 		color: $menufont
@@ -21,13 +28,16 @@
 		background: none
 		color: $spacercolor
 
-	.footer, #info
-		+background-image(linear-gradient($footer * 0.85, $footer))
-		+linear-gradient($footer * 0.85, $footer)
+	.footer
+		@include gradient-vertical($footer - #222, $footer + #111)
+		@include box-shadow(#{0 1px 4px rgba(0,0,0,.065)})
 		color: $menufont
-		background: $footer
-
-
+		a
+			color: $menufont
+	#info
+		color: $menufont
+		a
+			color: $menufont
 	.navbar .dropdown-menu
 		background: $menu
 		color: $menufont
@@ -110,7 +120,7 @@
 	+color-scheme(#414243, #000000, #000000, #000000, #FFFFFF, #000000, #000000, #000000, #000000, #FFFFFF)
 
 .clean
-	+color-scheme(#FFFFFF, #222222, #000000, #000000, #000000, #414243, #000000, #414243, #000000, #FFFFFF)
+	+color-scheme(#FFFFFF, #222222, #000000, #000000, #000000, #303132, #000000, #414243, #000000, #FFFFFF)
 
 .midnight
 	+color-scheme(#341931, #111625, #000000, #111625, #FFFFFF, #111625, #111625, #341931, #000000, #FFFFFF)

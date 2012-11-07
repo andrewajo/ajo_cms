@@ -51,6 +51,13 @@
 						= radio_button_tag 'page[layout]', layout, @page.layout == layout
 						= layout.capitalize
 						.thumbnail= image_tag("ajo_cms/page_#{layout}.png")
+			%br
+			.row-fluid
+				- ['calendar'].each do |layout|
+					.span4
+						= radio_button_tag 'page[layout]', layout, @page.layout == layout
+						= layout.capitalize
+						.thumbnail= image_tag("ajo_cms/page_#{layout}.png")
 		.modal-footer
 			= link_to section_path(@section) do
 				%span.btn Cancel

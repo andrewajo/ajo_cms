@@ -38,7 +38,7 @@
 	padding: 10px
 	+border-radius(3px)
 #content
-	margin-top: 28px
+	margin-top: 30px
 
 //sticky footer
 
@@ -74,12 +74,14 @@ html, body
 		color: #89ABCE
 	a:hover
 		text-decoration: none
+		color: #B9DBFE
 	.page_map
 		font-size: 10px
 		a
 			color: #89ABCE
 		a:hover
 			text-decoration: none
+			color: #B9DBFE
 .logo
 
 //forms
@@ -144,8 +146,24 @@ ul
 	.thumbnail
 		margin-right: 10px
 
+#gallery
+	margin-top: 15px
+	.thumbnail
+		height: 180px
+		width: 200px
+		line-height: 180px
+		text-align: center
+		img
+			vertical-align: middle
+			display: inline
+			
+
 .modal.gallery
 	background: none
+	+box-shadow(none)
+	border: none
+	width: 650px
+	margin: -250px 0 0 -325px
 	.thumbnail
 		border: none
 	.modal-body

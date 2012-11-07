@@ -42,11 +42,13 @@ class ImageUploader < CarrierWave::Uploader::Base
       #resize_to_fit(@width, @height)
       Rails.logger.debug "Crop x: #{model.crop_x} Crop y: #{model.crop_y} Crop w: #{model.crop_w} Crop h: #{model.crop_h}"
       Rails.logger.debug "Width: #{@width}, Height: #{@height}, RegWidth: #{@regularwidth}, RegHeight: #{@regularheight}"
+      Rails.logger.debug "x: #{model.crop_x}, y: #{model.crop_y}, w: #{model.crop_w}, h: #{model.crop_h}"
       manipulate! do |img|
-        x = model.crop_x.to_i * @regularwidth / @width
-        y = model.crop_y.to_i * @regularwidth / @height
-        w = model.crop_w.to_i * @regularwidth / @width
-        h = model.crop_h.to_i * @regularwidth / @height
+        x = model.crop_x.to_f * @regularwidth / @width
+        y = model.crop_y.to_f * @regularheight / @height
+        w = model.crop_w.to_f * @regularwidth / @width
+        h = model.crop_h.to_f * @regularheight / @height
+        Rails.logger.debug "#{w}x#{h}+#{x}+#{y}"
         img.crop "#{w}x#{h}+#{x}+#{y}"
         img
       end
@@ -58,22 +60,9 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [940, 243]
   end
   version :thumb do
-    process :resize_to_fit => [250, 250]
+    process :resize_to_fit => [175, 160]
   end
   version :gallery do
-    process :resize_to_fit => [350, 350]
+    process :resize_to_fit => [1000, 450]
   end
-
-   #Add a white list of extensions which are allowed to be uploaded.
-   #For images you might use something like this:
-   #def extension_white_list
-   #  %w(jpg jpeg gif png)
-   #end
-#
-   #Override the filename of the uploaded files:
-   #Avoid using model.id or version_name here, see uploader/store.rb for details.
-   #def filename
-   #  "something.jpg" if original_filename
-   #end
-
 end
