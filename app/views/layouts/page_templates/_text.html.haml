@@ -1,33 +1,10 @@
-- if @sliders.count > 0
+- subsection.posts.each do |post|
+	%br
 	.row-fluid
-		.span12
-			#myCarousel.carousel.slide
-				.carousel-inner
-					- @sliders.each_with_index do |post, index|
-						.item{:class => index == 0 ? 'active' : ''}
-							= image_tag post.image_url(:slider).to_s
-							- if post.title? || post.content?
-								.carousel-caption
-									%h4
-										= post.title
-									%p
-										= post.content.nil? ? post.content : post.content.html_safe
-				%a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} &lsaquo;
-				%a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} &rsaquo;
-- @headlines.each do |headline|
-	.row-fluid
-		.headline.span12
-			%h3= headline.title
-			= simple_format(headline.content)
-
-- @files.each_slice(6) do |slice|
-	.row-fluid
-		- slice.each do |attachment|
-			.span2
-				.attachment
-					= link_to attachment.file_url.to_s do
-						= image_tag('ajo_cms/document.png')
-						%br
-						= attachment.title
-						-#= link_to 'Delete', section_page_post_path(@section, @page, attachment), method: :delete, :confirm => 'Are you sure?'
-			
+		.row-fluid
+			.span12
+				%h2= post.title
+				%br
+		.row-fluid
+			.span12
+				= post.content.nil? ? post.content : post.content.html_safe

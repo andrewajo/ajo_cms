@@ -1,2 +1,4 @@
 - if controller.action_name == 'index'
 	%li= link_to 'New Page', new_section_page_path(@section)
+- elsif controller.action_name == 'show'
+	%li= link_to 'Add Subsection', new_section_page_subsection_path(@section.id, @page.id)

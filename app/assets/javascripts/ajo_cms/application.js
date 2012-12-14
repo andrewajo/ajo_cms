@@ -18,9 +18,9 @@
 
 jQuery(function($){
    $(".phone").mask("(999) 999-9999");
-   $('#myCarousel').carousel()
-   $('.dropdown-toggle').dropdown()
-   $('.datepicker').datepicker()
+   $('#myCarousel').carousel();
+   $('.dropdown-toggle').dropdown();
+   $('.datepicker').datepicker();
    $('tbody.sort').sortable({
          axis: 'y',
          helper: fixHelper,

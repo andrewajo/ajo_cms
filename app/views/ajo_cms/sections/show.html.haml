@@ -1,24 +1,26 @@
-%h2=@section.name
-%h5
-	= @section.title
+.row-fluid
+	.span2
+		= render 'sections_table'
+	.span10
+		- if flash[:notice]
+			.alert.alert-info
+				= flash[:notice]
 
-%table.table.table-striped
-	%thead
-		%tr
-			%th Page
-			%th Title
-			%th Layout
-			%th
-	%tbody.sort{'data-update-url' => sort_section_pages_url(@section)}
-		- @pages.each do |page|
-			= content_tag_for :tr, page do
-				%td= page.name
-				%td= page.title
-				%td= page.layout.nil? ? '' : page.layout.capitalize
-				%td.links
-					= link_to section_page_path(@section, page) do
-						%i.icon-search
-					= link_to edit_section_page_path(@section, page) do
-						%i.icon-edit
-					= link_to section_page_path(@section, page), method: :delete, :confirm => 'Are you sure?' do
-						%i.icon-trash
+		%table.table.table-striped
+			%thead
+				%tr
+					%th Page
+					%th Title
+					%th
+			%tbody.sort{'data-update-url' => sort_section_pages_url(@section)}
+				- @pages.each do |page|
+					= content_tag_for :tr, page do
+						%td= page.name
+						%td= page.title
+						%td.links
+							= link_to section_page_path(@section, page) do
+								%i.icon-search
+							= link_to edit_section_page_path(@section, page) do
+								%i.icon-edit
+							= link_to section_page_path(@section, page), method: :delete, :confirm => 'Are you sure?' do
+								%i.icon-trash

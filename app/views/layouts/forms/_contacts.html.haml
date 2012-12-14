@@ -3,11 +3,11 @@
 		New Contact
 		= link_to section_page_path(@section, @page) do
 			%i.icon-remove
-= form_for @post, builder: LabelledFormBuilder, :html => {:multipart => true}, :url => controller.action_name == 'new' ? section_page_posts_path(@section, @page, @post) : section_page_post_path(@section, @page, @post) do |f|
+= form_for @post, builder: LabelledFormBuilder, :html => {:multipart => true}, :url => controller.action_name == 'new' ? section_page_subsection_posts_path(@section, @page, @subsection, @post) : section_page_subsection_post_path(@section, @page, @subsection, @post) do |f|
 	.modal-body
 		.row-fluid
 			.span6
-				= f.hidden_field :page_id, :value => @page.id
+				= f.hidden_field :subsection_id, :value => @subsection.id
 				= f.hidden_field :post_type, :value => 'contacts'
 				= f.text_field "Name", :title
 			.span6

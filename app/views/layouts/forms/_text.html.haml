@@ -1,63 +1,19 @@
-- if params[:type] == 'slider'
-	.modal-header
-		%h3
-			= controller.action_name.capitalize + ' Slider Image'
-			= link_to section_page_path(@section, @page) do
-				%i.icon-remove
-	= form_for @post, builder: LabelledFormBuilder, :html => {:multipart => true}, :url => controller.action_name == 'new' ? section_page_posts_path(@section, @page, @post) : section_page_post_path(@section, @page, @post) do |f|
-		.modal-body
-			.row-fluid
-				.span6
-					= f.hidden_field :page_id, :value => @page.id
-					= f.hidden_field :post_type, :value => 'slider'
-					= f.text_field "Title", :title
-				.span6
-					.field
-						= f.label :image, "Image"
-						= f.file_field :image
-			.row-fluid
-				.span12
-					= f.text_area "Caption", :content
-		.modal-footer
-			= link_to section_page_path(@section, @page) do
-				%span.btn Cancel
-			= f.submit "Save", :class => 'btn'
-- elsif params[:type] == 'headline'
-	.modal-header
-		%h3
-			= controller.action_name.capitalize + ' Headline'
-			= link_to section_page_path(@section, @page) do
-				%i.icon-remove
-	= form_for @post, builder: LabelledFormBuilder, :html => {:multipart => true}, :url => action_name == 'new' ? section_page_posts_path(@section, @page, @post) : section_page_post_path(@section, @page, @post) do |f|
-		.modal-body
-			.row-fluid
-				.span12
-					= f.hidden_field :page_id, :value => @page.id
-					= f.hidden_field :post_type, :value => 'headline'
-					= f.text_field "Title", :title
-			.row-fluid
-				.span12
-					= f.text_area "Copy", :content
-		.modal-footer
-			= link_to section_page_path(@section, @page) do
-				%span.btn Cancel
-			= f.submit "Save", :class => 'btn'
-- elsif params[:type] == 'attachment'
-	.modal-header
-		= controller.action_name.capitalize + ' Attachment'
+.modal-header
+	%h3
+		= controller.action_name.capitalize + ' Text'
 		= link_to section_page_path(@section, @page) do
 			%i.icon-remove
-	= form_for @post, builder: LabelledFormBuilder, :html => {:multipart => true}, :url => action_name == 'new' ? section_page_posts_path(@section, @page, @post) : section_page_post_path(@section, @page, @post) do |f|
-		.modal-body
-			.row-fluid
-				.span6
-					= f.hidden_field :page_id, :value => @page.id
-					= f.hidden_field :post_type, :value => 'attachment'
-					= f.text_field "Label", :title
-				.span6
-					= f.label "File"
-					= f.file_field :file
-		.modal-footer
-			= link_to section_page_path(@section, @page) do
-				%span.btn Cancel
-			= f.submit "Save", :class => 'btn'
+= form_for @post, builder: LabelledFormBuilder, :html => {:multipart => true}, :url => action_name == 'new' ? section_page_subsection_posts_path(@section, @page, @subsection, @post) : section_page_subsection_post_path(@section, @page, @subsection, @post) do |f|
+	.modal-body
+		.row-fluid
+			.span12
+				= f.hidden_field :subsection_id, :value => @subsection.id
+				= f.hidden_field :post_type, :value => 'text'
+				= f.text_field "Title", :title
+		.row-fluid
+			.span12
+				= f.text_area "Copy", :content
+	.modal-footer
+		= link_to section_page_path(@section, @page) do
+			%span.btn Cancel
+		= f.submit "Save", :class => 'btn'

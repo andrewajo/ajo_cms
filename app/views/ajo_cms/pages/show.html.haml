@@ -1,15 +1,15 @@
-.row
-	.span3
-		.thumbnail= image_tag "ajo_cms/page_#{@page.layout}.png"
-	.span4
-		%h2= @page.name
-		%h4= @page.title
-		%h4
-			Last updated:
-			%br
-			= @page.updated_at
-%br
-.row
-	#actions.span12
-		= render "layouts/page_admin_actions/#{@page.layout}"	
-= render "layouts/page_admin_templates/#{@page.layout}"
+.row-fluid
+	.span2
+		= render 'sections_table'
+	.span10
+		- if @page.subsections.count == 0
+			.alert.alert-info
+				Add a subsection (right hand side) to get started!
+		- @page.subsections.each do |sub|
+			.row-fluid
+				.span2
+					= image_tag "ajo_cms/page_#{sub.layout}.png", :height => '100px'
+					= render :partial => "layouts/page_admin_actions/#{sub.layout}", :locals => {:subsection => sub}	
+				.span10
+					.row-fluid
+					= render :partial => "layouts/page_admin_templates/#{sub.layout}", :locals => {:subsection => sub}

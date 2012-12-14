@@ -1,0 +1,11 @@
+%br
+.columns.innercontainer
+	- subsection.posts.each_slice(3) do |slice|
+		.row-fluid
+			- slice.each do |post|
+				.span4.text-column
+					%p
+						%h3
+							= post.title
+						%br
+						= post.content.html_safe

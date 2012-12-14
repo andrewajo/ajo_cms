@@ -1,4 +1,13 @@
-%ul.nav.nav-pills
-	%li
-		= link_to new_section_page_post_path(@section, @page, :type => 'gallery') do
-			%span.btn Add Image
+%br
+%br
+= link_to new_section_page_subsection_post_path(@section, @page, subsection, :type => 'gallery') do
+	%span.btn
+		%i.icon-plus
+= link_to edit_section_page_subsection_path(@section, @page, subsection) do
+	%span.btn
+		%i.icon-edit
+= link_to section_page_subsection_path(@section, @page, subsection), :method => 'delete', :confirm => 'Are you sure?' do
+	%span.btn
+		%i.icon-remove
+%br
+%br

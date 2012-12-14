@@ -7,20 +7,21 @@
 	= csrf_meta_tags
 %body
 	#admin
-		.container
+		.container-fluid
 			.navbar.navbar-fixed-top
 				.navbar-inner
-					.container
+					.container-fluid
 						.brand= AjoCms::Company.first.name
-						.btn= link_to "View Site", rails_app_root_path
+						%ul.nav
+							%li= link_to "View Site", rails_app_root_path
 						%ul.nav.pull-right
 							
 							%li= link_to current_user.email
 							%li= link_to 'Logout', logout_path
-		.container
+		.container-fluid
 			%header.jumbotron.subhead
 				.subnav.subnav-fixed
-					.container
+					.container-fluid
 						%ul.nav.nav-pills.span6
 							%li{:class => controller.controller_name == 'sections' ? 'active' : ''}= link_to 'Content', sections_path()
 							%li{:class => controller.controller_name == 'companies' ? 'active' : ''}= link_to 'Settings', company_path(1)
@@ -28,7 +29,7 @@
 						%ul.pull-right.nav.nav-pills
 							%li
 								= render "actions/#{controller.controller_name}"
-		.container		
-			.row
+		.container-fluid	
+			.row-fluid
 				.span12
 					= yield

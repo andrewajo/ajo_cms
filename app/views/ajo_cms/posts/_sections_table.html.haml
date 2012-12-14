@@ -1,0 +1,15 @@
+#accordion
+	- @sections.each_with_index do |section, index|
+		%h3= section.name
+		%div
+			%ul.nav
+				- section.pages.each do |page|
+					%li= link_to page.name, section_page_path(section, page)
+		- if @section.id == section.id
+			- @index = index
+:javascript
+	$('#accordion').accordion({
+		'active' : #{@index},
+		collapsible: true,
+		autoHeight: true
+	})

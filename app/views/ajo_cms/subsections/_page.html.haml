@@ -1,0 +1,14 @@
+.row-fluid
+	.span2
+		= render 'sections_table'
+	.span10
+		- if @page.subsections.count == 0
+			.alert.alert-info
+				Add a subsection (right hand side) to get started!
+		- @page.subsections.each do |sub|
+			.row
+				.thumbnail.span3
+					= image_tag "ajo_cms/page_#{sub.layout}.png", :height => '200px'
+					= render :partial => "layouts/page_admin_actions/#{sub.layout}", :locals => {:subsection => sub}	
+				.span9
+					= render :partial => "layouts/page_admin_templates/#{sub.layout}", :locals => {:subsection => sub}

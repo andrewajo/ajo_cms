@@ -8,14 +8,9 @@ module AjoCms
   	end
 
     def show
+      @sections = Section.all
       @section = Section.find(params[:section_id])
       @page = Page.find(params[:id])
-      @posts = @page.posts.all
-      @sliders = @page.posts.where(:post_type => 'slider')
-      @headlines = @page.posts.where(:post_type => 'headline')
-      @images = @page.posts.where(:post_type => 'gallery')
-      @files = @page.posts.where(:post_type => 'attachment')
-      @blogs = @page.posts.where(:post_type => 'blogs')
     end
 
   	def edit

@@ -1,20 +1,20 @@
-- @posts.each do |post|
+%br
+.blog.innercontainer
 	%br
-	.row-fluid
+	- subsection.posts.each do |post|
 		.row-fluid
-			%h2= post.title
-			%br
-			%h4= post.date
-			%br
-		.row-fluid
-			- if post.image_url(:thumb).to_s != ''
-				.span9
-					= post.content.nil? ? post.content : post.content.html_safe
-					
-				.span3
-					.thumbnail
-						= image_tag post.image_url(:thumb).to_s
-			- else
-				.span12
-					= post.content.nil? ? post.content : post.content.html_safe
-	%br
+			.row-fluid
+				%h3= post.title
+				%br
+				%h4= post.date
+			.row-fluid
+				- if post.image_url(:thumb).to_s != ''
+					.span9
+						= post.content.nil? ? post.content : post.content.html_safe
+						
+					.span3
+						= image_tag post.image_url.to_s
+				- else
+					.span12
+						= post.content.nil? ? post.content : post.content.html_safe
+		%br

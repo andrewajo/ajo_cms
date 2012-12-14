@@ -11,6 +11,7 @@ module AjoCms
   	end
 
   	def show
+      @sections = Section.all
   		@section = Section.find(params[:id])
   		@pages = @section.pages.all
   	end

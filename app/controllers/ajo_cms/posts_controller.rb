@@ -1,15 +1,15 @@
 module AjoCms
   class PostsController < ApplicationController
   	layout 'ajo_cms/admin'
+    before_filter :set_defaults
+
+    def set_defaults
+      @section = Section.find(params[:section_id])
+      @page = Page.find(params[:page_id])
+      @subsection = Subsection.find(params[:subsection_id])
+    end
   	def new
-  		@section = Section.find(params[:section_id])
-  		@page = Page.find(params[:page_id])
-  		@posts = @page.posts
-      @sliders = @page.posts.where(:post_type => 'slider')
-      @headlines = @page.posts.where(:post_type => 'headlines')
-      @images = @page.posts.where(:post_type => 'gallery')
-      @files = @page.posts.where(:post_type => 'attachment')
-      @blogs = @page.posts.where(:post_type => 'blogs')
+      @sections = Section.all
   		@post = Post.new
   	end
 
@@ -38,14 +38,7 @@ module AjoCms
 
 
   	def create
-      @section = Section.find(params[:section_id])
-      @page = Page.find(params[:page_id])
-      @posts = @page.posts
-      @sliders = @page.posts.where(:post_type => 'slider')
-      @headlines = @page.posts.where(:post_type => 'headlines')
-      @images = @page.posts.where(:post_type => 'gallery')
-      @files = @page.posts.where(:post_type => 'attachment')
-      @blogs = @page.posts.where(:post_type => 'blogs')
+      @sections = Section.all
   		@post = Post.new(params[:post])
 
   		if @post.save

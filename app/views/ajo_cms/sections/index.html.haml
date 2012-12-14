@@ -1,8 +1,15 @@
 - if @sections.count > 0
 	- if flash[:notice]
-		.alert.alert-info
-			= flash[:notice]
-	= render 'sections_table'
+		.row-fluid
+			.span12
+				.alert.alert-info
+					= flash[:notice]
+	.row-fluid
+		.span2
+			= render 'sections_table'
+		.span10
+			.alert.alert-info
+				Use the navigation to the left to start editing your content or add a new section at the top right!
 
 - else
 	.alert

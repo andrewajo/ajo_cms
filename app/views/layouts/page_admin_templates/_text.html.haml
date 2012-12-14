@@ -1,39 +1,11 @@
--if @sliders.count > 0
+- subsection.post_type('text').each do |post|
+	%br
 	.row-fluid
 		.span12
-			#myCarousel.carousel.slide
-				.carousel-inner
-					- @sliders.each_with_index do |post, index|
-						.item{:class => index == 0 ? 'active' : ''}
-							= image_tag post.image_url(:slider).to_s
-							.carousel-caption
-								%h4
-									= post.title
-								%p
-									= post.content.html_safe
-									= link_to 'Edit', edit_section_page_post_path(@section, @page, post, :type => 'slider')
-									= link_to 'Delete', section_page_post_path(@section, @page, post), method: :delete, :confirm => 'Are you sure?'
-				%a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} &lsaquo;
-				%a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} &rsaquo;
-
-- @headlines.each do |headline|
-	.row-fluid
-		.headline.span12
-			%h3
-				= headline.title
-				= link_to 'Edit', edit_section_page_post_path(@section, @page, headline, :type => 'headline')
-				= link_to 'Delete', section_page_post_path(@section, @page, headline), method: :delete, :confirm => 'Are you sure?'
-
-			= simple_format(headline.content)
-
-- @files.each_slice(6) do |slice|
-	.row-fluid
-		- slice.each do |attachment|
-			.span2
-				.attachment
-					= link_to attachment.file_url.to_s do
-						= image_tag('ajo_cms/document.png')
-						%br
-						= attachment.title
-						-#= link_to 'Delete', section_page_post_path(@section, @page, attachment), method: :delete, :confirm => 'Are you sure?'
-			
+			.row-fluid
+				%h3
+					= post.title
+					= link_to 'Edit', edit_section_page_subsection_post_path(@section, @page, subsection, post, :type => 'blogs')
+					= link_to 'Delete', section_page_subsection_post_path(@section, @page, subsection, post), method: :delete, :confirm => 'Are you sure?'
+				%br
+				= post.content.html_safe

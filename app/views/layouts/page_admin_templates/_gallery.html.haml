@@ -1,8 +1,8 @@
-- @images.each_slice(4) do |slice|
+- subsection.posts.each_slice(4) do |slice|
 	.row-fluid
 		- slice.each do |post|
 			.span3
-				= link_to section_page_post_path(@section, @page, post) do
+				= link_to section_page_subsection_post_path(@section, @page, subsection, post) do
 					.row-fluid
 						#gallery.span12
 							.thumbnail= image_tag post.image_url(:thumb).to_s

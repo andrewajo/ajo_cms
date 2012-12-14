@@ -1,24 +1,3 @@
--if @sliders.count > 0
-	.row-fluid
-		.span12
-			#myCarousel.carousel.slide
-				.carousel-inner
-					- @sliders.each_with_index do |post, index|
-						.item{:class => index == 0 ? 'active' : ''}
-							= image_tag post.image_url(:slider).to_s
-							.carousel-caption
-								%h4
-									= post.title
-								%p
-									= post.content.nil? ? post.content : post.content.html_safe
-									= link_to 'Edit', edit_section_page_post_path(@section, @page, post)
-									= link_to 'Delete', section_page_post_path(@section, @page, post), method: :delete, :confirm => 'Are you sure?'
-				%a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} &lsaquo;
-				%a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} &rsaquo;
--if @sliders.count == 0
-	%br
-	%br
-	%br
 .row-fluid
 	.span7
 		.thumbnail

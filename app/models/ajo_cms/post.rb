@@ -1,10 +1,10 @@
 module AjoCms
   class Post < ActiveRecord::Base
-  	attr_accessible :title, :content, :post_type, :page_id, :image, :file, :date, :crop_x, :crop_y, :crop_w, :crop_h
+  	attr_accessible :title, :content, :post_type, :subsection_id, :image, :file, :date, :crop_x, :crop_y, :crop_w, :crop_h
 
   	default_scope order('position ASC')
 
-  	belongs_to :pages
+  	belongs_to :subsection
   	mount_uploader :image, ImageUploader
   	mount_uploader :file, FileUploader
     attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
@@ -16,11 +16,11 @@ module AjoCms
     end
 
 	  def next
-	  	self.class.find(:first, :conditions => ["id > ? And page_id = ?", self.id, self.page_id])
+	  	self.class.find(:first, :conditions => ["id > ? And subsection_id = ?", self.id, self.subsection_id])
 	  end
 
 	  def last
-	  	self.class.find(:first, :conditions => ["id < ? And page_id = ?", self.id, self.page_id])
+	  	self.class.find(:first, :conditions => ["id < ? And subsection_id = ?", self.id, self.subsection_id])
 	  end
   end
 end

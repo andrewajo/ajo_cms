@@ -1,0 +1,32 @@
+= render 'page'
+.modal-backdrop
+.modal
+	.modal-header
+		%h3 New Subsection
+	= form_for @subsection, :builder => LabelledFormBuilder, :url => section_page_subsections_path do |f|
+		.modal-body
+			= f.hidden_field :page_id, :value => @page.id
+			.row-fluid
+				- ['slider', 'gallery', 'text'].each do |layout|
+					.span4
+						= radio_button_tag 'subsection[layout]', layout, @subsection.layout == layout
+						= layout.capitalize
+						.thumbnail= image_tag("ajo_cms/page_#{layout}.png")
+			%br
+			.row-fluid
+				- ['columns', 'contacts', 'contact'].each do |layout|
+					.span4
+						= radio_button_tag 'subsection[layout]', layout, @subsection.layout == layout
+						= layout.capitalize
+						.thumbnail= image_tag("ajo_cms/page_#{layout}.png")
+			%br
+			.row-fluid
+				- ['blog'].each do |layout|
+					.span4
+						= radio_button_tag 'subsection[layout]', layout, @subsection.layout == layout
+						= layout.capitalize
+						.thumbnail= image_tag("ajo_cms/page_#{layout}.png")
+		.modal-footer
+			= link_to section_page_path(@section, @page) do
+				%span.btn Cancel
+			= f.submit 'Save', :class => 'btn'

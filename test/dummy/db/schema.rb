@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120507145241) do
+ActiveRecord::Schema.define(:version => 20121209183526) do
 
   create_table "ajo_cms_companies", :force => true do |t|
     t.string   "title"
@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(:version => 20120507145241) do
   create_table "ajo_cms_pages", :force => true do |t|
     t.string   "name"
     t.string   "title"
-    t.string   "layout"
     t.integer  "section_id"
     t.boolean  "index_page"
     t.datetime "created_at", :null => false
@@ -56,13 +55,13 @@ ActiveRecord::Schema.define(:version => 20120507145241) do
     t.string   "title"
     t.text     "content"
     t.string   "post_type"
-    t.integer  "page_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "image"
     t.date     "date"
     t.integer  "position"
     t.string   "file"
+    t.integer  "subsection_id"
   end
 
   create_table "ajo_cms_sections", :force => true do |t|
@@ -71,6 +70,14 @@ ActiveRecord::Schema.define(:version => 20120507145241) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "position"
+  end
+
+  create_table "ajo_cms_subsections", :force => true do |t|
+    t.integer  "page_id"
+    t.integer  "position"
+    t.string   "layout"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "ajo_cms_users", :force => true do |t|

@@ -1,12 +1,12 @@
-- @posts.each do |post|
+- subsection.posts.each do |post|
 	%br
 	.row-fluid
 		.span1
-			= link_to edit_section_page_post_path(@section, @page, post) do
+			= link_to edit_section_page_subsection_post_path(@section, @page, subsection, post) do
 				%span.btn.btn-mini.btn-primary Edit
 			%br
 			%br
-			= link_to section_page_post_path(@section, @page, post), method: :delete, :confirm => 'Are you sure?' do
+			= link_to section_page_subsection_post_path(@section, @page, subsection, post), method: :delete, :confirm => 'Are you sure?' do
 				%span.btn.btn-mini.btn-danger Delete
 		.span11
 			.row-fluid

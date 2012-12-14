@@ -1,31 +1,12 @@
-- @headlines.each do |headline|
-	.row-fluid
-		.headline.span12
-			%h3
-				= headline.title
-				= link_to 'Edit', edit_section_page_post_path(@section, @page, headline, :type => 'headline')
-				= link_to 'Delete', section_page_post_path(@section, @page, headline), method: :delete, :confirm => 'Are you sure?'
-
-			= simple_format(headline.content)
-- @files.each_slice(6) do |slice|
-	.row-fluid
-		- slice.each do |attachment|
-			.span2
-				.attachment
-					= link_to attachment.file_url.to_s do
-						= image_tag('ajo_cms/document.png')
-						%br
-						= attachment.title
-						-#= link_to 'Delete', section_page_post_path(@section, @page, attachment), method: :delete, :confirm => 'Are you sure?'
-- @blogs.each do |post|
+- subsection.post_type('blogs').each do |post|
 	%br
 	.row-fluid
 		.span12
 			.row-fluid
 				%h3
 					= post.title
-					= link_to 'Edit', edit_section_page_post_path(@section, @page, post, :type => 'blogs')
-					= link_to 'Delete', section_page_post_path(@section, @page, post), method: :delete, :confirm => 'Are you sure?'
+					= link_to 'Edit', edit_section_page_subsection_post_path(@section, @page, subsection, post, :type => 'blogs')
+					= link_to 'Delete', section_page_subsection_post_path(@section, @page, subsection, post), method: :delete, :confirm => 'Are you sure?'
 
 				%h4= post.date
 				%br

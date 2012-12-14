@@ -14,5 +14,6 @@
 					.navbar-inner
 						.container
 							.brand Preview
-							.pull-right.btn= link_to "Admin", root_path
+							%ul.nav.pull-right
+								%li= link_to "Admin", root_path
 	= render 'layouts/main_templates/' + @site_layout

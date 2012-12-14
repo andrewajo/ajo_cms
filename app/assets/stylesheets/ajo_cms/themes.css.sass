@@ -1,5 +1,11 @@
-@mixin color-scheme($header, $navbar, $spacercolor, $slider, $slidercolor, $footer, $menu, $menuhover, $bodyfont, $menufont)
+@mixin color-scheme($header, $navbar, $spacercolor, $slider, $slidercolor, $footer, $menu, $menuhover, $bodyfont, $menufont, $footerfont)
 	color: $bodyfont
+
+	h3
+		color: $bodyfont - #161616
+
+	.blog
+		border-top: 1px solid $bodyfont + #666666
 
 	#header
 		background: $header
@@ -11,13 +17,12 @@
 		min-height: $navbarHeight
 		padding-left:  20px
 		padding-right: 20px
-		@include gradient-vertical($navbar + #222222, $navbar)
+		@include gradient-vertical($navbar + #1A1A1A, $navbar)
 		border: 1px solid $navbar
-		@include box-shadow(#{0 1px 4px rgba(0,0,0,.065)})
+		@include box-shadow(#{1px 1px 1.5px rgba(0,0,0,.35)})
 
 		// Prevent floats from breaking the navbar
 		@include clearfix()
-
 
 	#sidenav ul.nav li a
 		color: $menufont
@@ -33,9 +38,9 @@
 		a
 			color: $menufont
 	#info
-		color: $menufont
+		color: $footerfont
 		a
-			color: $menufont
+			color: $footerfont
 	.navbar .dropdown-menu
 		background: $menu
 		color: $menufont
@@ -45,7 +50,7 @@
 		color: $menufont
 
 	.navbar .nav li a.dropdown-toggle:hover
-		background: $navbar * 1.2
+		background: $navbar * 1.1
 		color: $menufont
 
 	.dropdown-menu a
@@ -109,22 +114,27 @@
 /** header, navbar, spacercolor, slider, slidercolor, footer, menu, menuhover, bodyfont, menufont **/
 
 .default
-	+color-scheme(#2B4C7E, #567EBB, #000000, #000000, #FFFFFF, #567EBB, #1F1F20, #2B4C7E, #000000, #DCE0E6)
+	+color-scheme(#2B4C7E, #567EBB, #000000, #000000, #FFFFFF, #567EBB, #1F1F20, #2B4C7E, #000000, #DCE0E6, #DCE0E6)
 
 .purple
-	+color-scheme(#967DBF, #000000, #000000, #000000, #FFFFFF, #000000, #000000, #222222, #000000, #FFFFFF)
+	+color-scheme(#967DBF, #000000, #000000, #000000, #FFFFFF, #000000, #000000, #222222, #000000, #FFFFFF, #FFFFFF)
 
 .black
-	+color-scheme(#414243, #000000, #000000, #000000, #FFFFFF, #000000, #000000, #000000, #000000, #FFFFFF)
+	+color-scheme(#414243, #000000, #000000, #000000, #FFFFFF, #000000, #000000, #000000, #000000, #FFFFFF, #FFFFFF)
 
 .clean
-	+color-scheme(#FDFDFD, #444444, #333333, #000000, #000000, #414243, #000000, #414243, #000000, #FFFFFF)
+	+color-scheme(#FDFDFD, #444444, #333333, #000000, #000000, #414243, #000000, #414243, #000000, #FFFFFF, #FFFFFF)
 
 .midnight
-	+color-scheme(#341931, #111625, #000000, #111625, #FFFFFF, #111625, #111625, #341931, #000000, #FFFFFF)
+	+color-scheme(#341931, #111625, #000000, #111625, #FFFFFF, #111625, #111625, #341931, #000000, #FFFFFF, #FFFFFF)
 
 .grapefruit
-	+color-scheme(#FFF4D8, #C6559A, #000000, #C6559A, #500969, #C6559A, #500969, #500969, #500969, #FFF4D8)
+	+color-scheme(#FFF4D8, #C6559A, #000000, #C6559A, #500969, #C6559A, #500969, #500969, #500969, #FFF4D8, #FFF4D8)
 
 .beach
-	+color-scheme(#7DAFEA, #A88E69, #886E49, #FFFFFF, #643600, #A88E69, #886E49, #684E29, #643600, #FFFFFF)
+	+color-scheme(#7DAFEA, #A88E69, #886E49, #FFFFFF, #643600, #A88E69, #886E49, #684E29, #643600, #FFFFFF, #FFFFFF)
+
+.navy
+	+color-scheme(none, #707070, #E9E9E9, #000000, #FFFFFF, #7A7A7A, #000000, #222222, #888888, #FFFFFF, #E9E9E9)
+
+

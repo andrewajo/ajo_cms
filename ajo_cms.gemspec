@@ -27,6 +27,8 @@ Gem::Specification.new do |s|
   s.add_dependency "fog"
   s.add_dependency "bourbon"
   s.add_dependency "acts_as_list"
+  s.add_dependency "turbolinks"
+  s.add_dependency "jquery-turbolinks"
   # s.add_dependency "jquery-rails"
 
   s.add_development_dependency "sqlite3"

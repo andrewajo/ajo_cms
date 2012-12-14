@@ -1,24 +1,18 @@
-.row-fluid
-	.span12
-		#myCarousel.carousel.slide
-			.carousel-inner
-				- @sliders.each_with_index do |post, index|
-					.item{:class => index == 0 ? 'active' : ''}
-						= image_tag post.image_url(:slider).to_s
-						.carousel-caption
-							%h4
-								= post.title
-							%p
-								= post.content.html_safe
-								= link_to 'Edit', edit_section_page_post_path(@section, @page, post, :type => 'slider')
-								= link_to 'Delete', section_page_post_path(@section, @page, post), method: :delete, :confirm => 'Are you sure?'
-			%a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} &lsaquo;
-			%a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} &rsaquo;
-.row-fluid
-	- @headlines.each do |headline|
-		.headline.span4
-			%h3
-				= headline.title
-				= link_to 'Edit', edit_section_page_post_path(@section, @page, headline, :type => 'headline')
-				= link_to 'Delete', section_page_post_path(@section, @page, headline), method: :delete, :confirm => 'Are you sure?'
-			= simple_format(headline.content)
+- if subsection.post_type('slider').count > 0
+	.row-fluid
+		.span12
+			#myCarousel.carousel.slide
+				.carousel-inner
+					- subsection.post_type('slider').each_with_index do |post, index|
+						.item{:class => index == 0 ? 'active' : ''}
+							= image_tag post.image_url(:slider).to_s
+							- if post.title? || post.content?
+								.carousel-caption
+									%h4
+										= post.title
+									%p
+										= post.content.nil? ? post.content : post.content.html_safe
+										= link_to 'Edit', edit_section_page_subsection_post_path(@section, @page, subsection, post, :type => 'slider')
+										= link_to 'Delete', section_page_subsection_post_path(@section, @page, subsection, post), method: :delete, :confirm => 'Are you sure?'
+				%a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} &lsaquo;
+				%a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} &rsaquo;

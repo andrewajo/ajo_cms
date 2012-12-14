@@ -4,11 +4,11 @@
 			= "#{controller.action_name.capitalize} Blog Post"
 			= link_to section_page_path(@section, @page) do
 				%i.icon-remove
-	= form_for @post, builder: LabelledFormBuilder, :html => {:multipart => true}, :url => controller.action_name == 'new' ? section_page_posts_path(@section, @page, @post) : section_page_post_path(@section, @page, @post) do |f|
+	= form_for @post, builder: LabelledFormBuilder, :html => {:multipart => true}, :url => controller.action_name == 'new' ? section_page_subsection_posts_path(@section, @page, @subsection, @post) : section_page_subsection_post_path(@section, @page, @post) do |f|
 		.modal-body
 			.row-fluid
 				.span6
-					= f.hidden_field :page_id, :value => @page.id
+					= f.hidden_field :subsection_id, :value => @subsection.id
 					= f.hidden_field :post_type, :value => 'blogs'
 					= f.text_field "Title", :title
 					= f.text_field "Date", :date, :class => 'datepicker'
@@ -30,11 +30,11 @@
 		= controller.action_name.capitalize + ' Attachment'
 		= link_to section_page_path(@section, @page) do
 			%i.icon-remove
-	= form_for @post, builder: LabelledFormBuilder, :html => {:multipart => true}, :url => action_name == 'new' ? section_page_posts_path(@section, @page, @post) : section_page_post_path(@section, @page, @post) do |f|
+	= form_for @post, builder: LabelledFormBuilder, :html => {:multipart => true}, :url => action_name == 'new' ? section_page_subsection_posts_path(@section, @page, @post) : section_page_subsection_post_path(@section, @page, @subsection, @post) do |f|
 		.modal-body
 			.row-fluid
 				.span6
-					= f.hidden_field :page_id, :value => @page.id
+					= f.hidden_field :subsection_id, :value => @subsection.id
 					= f.hidden_field :post_type, :value => 'attachment'
 					= f.text_field "Label", :title
 				.span6
@@ -51,11 +51,11 @@
 			= controller.action_name.capitalize + ' Headline'
 			= link_to section_page_path(@section, @page) do
 				%i.icon-remove
-	= form_for @post, builder: LabelledFormBuilder, :html => {:multipart => true}, :url => action_name == 'new' ? section_page_posts_path(@section, @page, @post) : section_page_post_path(@section, @page, @post) do |f|
+	= form_for @post, builder: LabelledFormBuilder, :html => {:multipart => true}, :url => action_name == 'new' ? section_page_subsection_posts_path(@section, @page, @subsection, @post) : section_page_subsection_post_path(@section, @page, @subsection, @post) do |f|
 		.modal-body
 			.row-fluid
 				.span12
-					= f.hidden_field :page_id, :value => @page.id
+					= f.hidden_field :subsection_id, :value => @subsection.id
 					= f.hidden_field :post_type, :value => 'headline'
 					= f.text_field "Title", :title
 			.row-fluid

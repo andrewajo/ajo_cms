@@ -11,8 +11,11 @@ AjoCms::Engine.routes.draw do
 		collection { post :sort }
 		resources :pages do
 			collection { post :sort }
-			resources :posts do
+			resources :subsections do
 				collection { post :sort }
+				resources :posts do
+					collection { post :sort }
+				end
 			end
 		end
 	end
