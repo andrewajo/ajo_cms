@@ -37,15 +37,14 @@
 									= @company.name
 								.span4
 									= @company.address + ' ' +@company.city
-							.row-fluid
-								.span12
-									- @sections.each_slice(2) do |slice|
-										.row-fluid
-											- slice.each do |section|
-												.section_map.span6
-													%h5
-														=section.name
-													%ul.page_map
-														- section.pages[1..-1].each do |page|
-															%li= page.name
+							-#.row-fluid
+							-#	.span12
+							-#		- @sections.each_slice(6) do |slice|
+							-#			.row-fluid
+							-#				- slice.each do |section|
+							-#					.section_map.span2
+							-#						=section.name
+							-#						%ul.page_map
+							-#							- section.pages[1..-1].each do |page|
+							-#								%li= page.name
 			%br

@@ -1,6 +1,8 @@
 .row-fluid
 	.span2
-		= render 'sections_table'
+		.row-fluid
+			.span12
+				= render 'sections_table'
 	.span10
 		- if @page.subsections.count == 0
 			.alert.alert-info

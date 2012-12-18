@@ -1,17 +1,20 @@
 - subsection.post_type('blogs').each do |post|
-	%br
 	.row-fluid
 		.span12
 			.row-fluid
 				%h3
 					= post.title
-					= link_to 'Edit', edit_section_page_subsection_post_path(@section, @page, subsection, post, :type => 'blogs')
-					= link_to 'Delete', section_page_subsection_post_path(@section, @page, subsection, post), method: :delete, :confirm => 'Are you sure?'
+					.pull-right
+						%i.icon-move
+						= link_to edit_section_page_subsection_post_path(@section, @page, subsection, post, :type => 'blogs') do
+							%i.icon-edit
+						= link_to section_page_subsection_post_path(@section, @page, subsection, post), method: :delete, :confirm => 'Are you sure?' do
+							%i.icon-remove
 
 				%h4= post.date
 				%br
 			.row-fluid
-				- if post.image_url(:thumb).nil?
+				- if post.image_url.nil?
 					.span12
 						= post.content.html_safe
 				- else
@@ -19,6 +22,5 @@
 						= post.content.html_safe
 						
 					.span3
-						.thumbnail
-							= image_tag post.image_url(:thumb).to_s
+						= image_tag post.image_url.to_s
 	%br

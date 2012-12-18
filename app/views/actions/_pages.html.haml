@@ -1,4 +1,22 @@
 - if controller.action_name == 'index'
 	%li= link_to 'New Page', new_section_page_path(@section)
 - elsif controller.action_name == 'show'
-	%li= link_to 'Add Subsection', new_section_page_subsection_path(@section.id, @page.id)
+	%li.dropdown
+		= link_to '', :class => 'dropdown-toggle', 'data-dropdown' => 'dropdown' do
+			= @section.name
+			%i.icon-chevron-down.icon-white
+		%ul.dropdown-menu
+			%li= link_to 'Edit'
+			%li= link_to 'Delete'
+			%li= link_to 'Move up'
+			%li= link_to 'Move down'
+	%li.dropdown
+		= link_to '', :class => 'dropdown-toggle', 'data-dropdown' => 'dropdown' do
+			= @page.name
+			%i.icon-chevron-down.icon-white
+		%ul.dropdown-menu
+			%li= link_to 'Edit'
+			%li= link_to 'Delete'
+			%li= link_to 'Move up'
+			%li= link_to 'Move down'
+	%li= link_to 'New Subsection', new_section_page_subsection_path(@section.id, @page.id)

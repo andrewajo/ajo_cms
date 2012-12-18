@@ -7,21 +7,16 @@ module AjoCms
       @section = Section.find(params[:section_id])
       @page = Page.find(params[:page_id])
       @subsection = Subsection.find(params[:subsection_id])
+      @sections = Section.all
     end
   	def new
-      @sections = Section.all
   		@post = Post.new
   	end
 
     def edit
       @section = Section.find(params[:section_id])
       @page = Page.find(params[:page_id])
-      @posts = @page.posts
-      @sliders = @page.posts.where(:post_type => 'slider')
-      @headlines = @page.posts.where(:post_type => 'headlines')
-      @images = @page.posts.where(:post_type => 'gallery')
-      @files = @page.posts.where(:post_type => 'attachment')
-      @blogs = @page.posts.where(:post_type => 'blogs')
+      @subsection = Subsection.find(params[:subsection_id])
       @post = Post.find(params[:id])
     end
 

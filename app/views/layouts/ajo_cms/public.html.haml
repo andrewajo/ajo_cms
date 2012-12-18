@@ -9,11 +9,15 @@
 %body	
 	- if current_user
 		#preview
-			.container
+			.container-fluid
 				.navbar.navbar-fixed-top
 					.navbar-inner
-						.container
-							.brand Preview
-							%ul.nav.pull-right
+						.container-fluid
+							.brand= AjoCms::Company.first.name
+							%ul.nav
 								%li= link_to "Admin", root_path
+							%ul.nav.pull-right
+								%li
+									%a= current_user.email
+								%li= link_to 'Logout', logout_path
 	= render 'layouts/main_templates/' + @site_layout

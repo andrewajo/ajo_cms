@@ -6,8 +6,13 @@
 					.span12
 						%h3
 							= post.title
-							= link_to 'Edit', edit_section_page_subsection_post_path(@section, @page, subsection, post, :type => 'blogs')
-							= link_to 'Delete', section_page_subsection_post_path(@section, @page, subsection, post), method: :delete, :confirm => 'Are you sure?'
+							.pull-right
+								%i.icon-chevron-left
+								%i.icon-chevron-right
+								= link_to edit_section_page_subsection_post_path(@section, @page, subsection, post, :type => 'blogs') do
+									%i.icon-edit
+								= link_to section_page_subsection_post_path(@section, @page, subsection, post), method: :delete, :confirm => 'Are you sure?' do
+									%i.icon-remove
 						%br
 						= post.content.html_safe
 	%br

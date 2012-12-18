@@ -1,10 +1,12 @@
-- subsection.posts.each do |post|
+.text.innercontainer
+	- subsection.posts.each do |post|
+		.row-fluid
+			.row-fluid
+				.span12
+					%h2= post.title
+					%br
+			.row-fluid
+				.span12
+					= post.content.nil? ? post.content : post.content.html_safe
 	%br
-	.row-fluid
-		.row-fluid
-			.span12
-				%h2= post.title
-				%br
-		.row-fluid
-			.span12
-				= post.content.nil? ? post.content : post.content.html_safe
+	%br

@@ -1,16 +1,19 @@
-- if subsection.post_type('slider').count > 0
-	.row-fluid
-		.span12
-			#myCarousel.carousel.slide
-				.carousel-inner
-					- subsection.post_type('slider').each_with_index do |post, index|
-						.item{:class => index == 0 ? 'active' : ''}
-							= image_tag post.image_url(:slider).to_s
-							- if post.title? || post.content?
-								.carousel-caption
-									%h4
-										= post.title
-									%p
-										= post.content.nil? ? post.content : post.content.html_safe
-				%a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} &lsaquo;
-				%a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} &rsaquo;
+.slider
+	- if subsection.post_type('slider').count > 0
+		.row-fluid
+			.span12
+				#myCarousel.carousel.slide
+					.carousel-inner
+						- subsection.post_type('slider').each_with_index do |post, index|
+							.item{:class => index == 0 ? 'active' : ''}
+								= image_tag post.image_url(:slider).to_s
+								- if post.title? || post.content?
+									.carousel-caption
+										%h4
+											= post.title
+										%p
+											= post.content.nil? ? post.content : post.content.html_safe
+					%a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} &lsaquo;
+					%a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} &rsaquo;
+	%br
+	%br

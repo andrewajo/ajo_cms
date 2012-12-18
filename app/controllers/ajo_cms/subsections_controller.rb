@@ -23,5 +23,11 @@ module AjoCms
 
       redirect_to section_page_path(params[:section_id], params[:page_id])
     end
+    def sort
+      params[:page].each_with_index do |id, index|
+        Page.update_all({position: index+1}, {id: id})
+      end
+      render nothing: true
+    end
   end
 end

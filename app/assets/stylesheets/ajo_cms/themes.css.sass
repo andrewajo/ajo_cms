@@ -4,8 +4,8 @@
 	h3
 		color: $bodyfont - #161616
 
-	.blog
-		border-top: 1px solid $bodyfont + #666666
+	.slider, .columns
+		border-bottom: 1px solid $bodyfont + #6D6D6D
 
 	#header
 		background: $header
@@ -32,8 +32,9 @@
 		color: $spacercolor
 
 	.footer
-		@include gradient-vertical($footer, $footer + #111)
-		@include box-shadow(#{0 1px 4px rgba(0,0,0,.065)})
+		@include gradient-vertical($footer, $footer + #1A1A1A)
+		border: 1px solid $footer
+		@include box-shadow(#{1px 1px 1.5px rgba(0,0,0,.35)})
 		color: $menufont
 		a
 			color: $menufont
@@ -111,7 +112,8 @@
 
 
 /** themes go here! **/
-/** header, navbar, spacercolor, slider, slidercolor, footer, menu, menuhover, bodyfont, menufont **/
+
+/** header, navbar, spacercolor, slider, slidercolor, footer, menu, menuhover, bodyfont, menufont, footerfont **/
 
 .default
 	+color-scheme(#2B4C7E, #567EBB, #000000, #000000, #FFFFFF, #567EBB, #1F1F20, #2B4C7E, #000000, #DCE0E6, #DCE0E6)
@@ -135,6 +137,6 @@
 	+color-scheme(#7DAFEA, #A88E69, #886E49, #FFFFFF, #643600, #A88E69, #886E49, #684E29, #643600, #FFFFFF, #FFFFFF)
 
 .navy
-	+color-scheme(none, #707070, #E9E9E9, #000000, #FFFFFF, #7A7A7A, #000000, #222222, #888888, #FFFFFF, #E9E9E9)
+	+color-scheme(none, #707070, #E9E9E9, #000000, #FFFFFF, #707070, #000000, #222222, #888888, #FFFFFF, #FFFFFF)
 
 
