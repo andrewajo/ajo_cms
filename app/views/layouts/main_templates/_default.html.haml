@@ -33,10 +33,16 @@
 					.footer.rounded
 						#info.container
 							.row-fluid
-								.span3
-									= @company.name
 								.span4
-									= @company.address + ' ' +@company.city
+									= @company.name
+								.span5
+									= @company.address + ' ' +@company.city + ' ' + (@company.province || '') + ' ' + (@company.zip_code || '')
+								.span3
+									.row-fluid
+										.span4
+										.span8
+											Phone:
+											= @company.phone
 							-#.row-fluid
 							-#	.span12
 							-#		- @sections.each_slice(6) do |slice|
