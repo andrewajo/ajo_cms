@@ -42,7 +42,7 @@ body
 			color: $menufont
 	.entry
 		padding: 4px
-		background: rgba(255, 255, 255, 0.4)
+		background: #FFF
 		@include box-shadow(#{1px 1px 4px rgba(0,0,0,.35)})
 		+border-radius(3px 3px 0px 0px)
 		margin-bottom: 10px
@@ -53,9 +53,18 @@ body
 			font-size: 16px
 			color: #FFF
 			padding: 4px
-			text-shadow: 1px 1px rgba(0,0,0,.55)
+			text-shadow: 1px 1px rgba(0,0,0,.35)
 	.entry-content
 		padding: 5px 2px 2px 2px
+		table
+			background: #FDFDFD
+			@include box-shadow(#{1px 1px 4px rgba(0,0,0,.35)})
+			margin-left: 5px
+			td
+				padding: 10px
+				min-width: 100px
+		img
+			margin-top: -20px
 	#info
 		color: $footerfont
 		a
