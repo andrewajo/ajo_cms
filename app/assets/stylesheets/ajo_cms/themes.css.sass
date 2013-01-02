@@ -1,3 +1,5 @@
+body
+	background: URL('http://rcvmobile.herokuapp.com/assets/background.png') !important
 @mixin color-scheme($header, $navbar, $spacercolor, $slider, $slidercolor, $footer, $menu, $menuhover, $bodyfont, $menufont, $footerfont)
 	color: $bodyfont
 
@@ -34,10 +36,26 @@
 	.footer
 		@include gradient-vertical($footer, $footer + #1A1A1A)
 		border: 1px solid $footer
-		@include box-shadow(#{1px 1px 1.5px rgba(0,0,0,.35)})
+		@include box-shadow(#{1px 1px 4px rgba(0,0,0,.35)})
 		color: $menufont
 		a
 			color: $menufont
+	.entry
+		padding: 4px
+		background: #FFF
+		@include box-shadow(#{1px 1px 4px rgba(0,0,0,.35)})
+		+border-radius(3px 3px 0px 0px)
+		margin-bottom: 10px
+	.entry-head
+		background: #0096DC
+		+border-radius(3px 3px 0px 0px)
+		h3
+			font-size: 16px
+			color: #FFF
+			padding: 4px
+			text-shadow: 1px 1px rgba(0,0,0,.55)
+	.entry-content
+		padding: 5px 2px 2px 2px
 	#info
 		color: $footerfont
 		a

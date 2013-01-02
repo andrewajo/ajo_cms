@@ -4,7 +4,7 @@ module AjoCms
 
   	has_many :pages, :dependent => :destroy
   	accepts_nested_attributes_for :pages
-  	before_save :create_index
+  	before_create :create_index
     default_scope order('position ASC')
   	acts_as_list
 
