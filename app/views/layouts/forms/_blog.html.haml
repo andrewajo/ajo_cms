@@ -4,7 +4,7 @@
 			= "#{controller.action_name.capitalize} Blog Post"
 			= link_to section_page_path(@section, @page) do
 				%i.icon-remove
-	= form_for @post, builder: LabelledFormBuilder, :html => {:multipart => true}, :url => controller.action_name == 'new' ? section_page_subsection_posts_path(@section, @page, @subsection, @post) : section_page_subsection_post_path(@section, @page, @post) do |f|
+	= form_for @post, builder: LabelledFormBuilder, :html => {:multipart => true}, :url => controller.action_name == 'new' ? section_page_subsection_posts_path(@section, @page, @subsection, @post) : section_page_subsection_post_path(@section, @page, @subsection, @post) do |f|
 		.modal-body
 			.row-fluid
 				.span6
