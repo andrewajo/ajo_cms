@@ -58,6 +58,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :slider do
     process :crop
     process :resize_to_fill => [940, 243]
+    process :quality => 100
   end
   version :thumb do
     process :resize_to_fit => [175, 160]
