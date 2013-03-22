@@ -1,17 +1,17 @@
-%br
-%br
-- subsection.posts.each_slice(2) do |slice|
-	.row-fluid
-		-slice.each do |post|
-			.span12
-				.row-fluid
-					.span12
-						%h4= post.title
-				.row-fluid
-					.span12
-						#contactdescription
-							.thumbnail.span6
-								= image_tag post.image_url(:large).to_s
-							= post.content.nil? ? post.content : post.content.html_safe
-						%br
-						%br
+.contacts.innercontainer
+	%br
+	- subsection.posts.each do |slice|
+		.row-fluid
+			-slice.each do |post|
+				.span12
+					.row-fluid
+						.span12
+							%h3= post.title
+					.row-fluid
+						.span12
+							#contactdescription
+								.thumbnail.span6
+									= image_tag post.image_url(:large).to_s
+								= post.content.nil? ? post.content : post.content.html_safe
+							%br
+							%br
