@@ -2,7 +2,7 @@ module AjoCms
   class SectionsController < ApplicationController
     layout 'ajo_cms/admin'
   	def index
-  		@sections = Section.all
+  		@sections = Section.order(:position)
   	end
 
   	def new

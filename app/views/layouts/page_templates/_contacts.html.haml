@@ -3,14 +3,14 @@
 - subsection.posts.each_slice(2) do |slice|
 	.row-fluid
 		-slice.each do |post|
-			.span6
+			.span12
 				.row-fluid
 					.span12
 						%h4= post.title
 				.row-fluid
 					.span12
 						#contactdescription
-							.thumbnail.span4
+							.thumbnail.span6
 								= image_tag post.image_url(:thumb).to_s
 							= post.content.nil? ? post.content : post.content.html_safe
 						%br
