@@ -1,17 +1,17 @@
 .contacts.innercontainer
 	%br
-	- subsection.posts.each do |slice|
+	- subsection.posts.each do |post|
 		.row-fluid
-			-slice.each do |post|
-				.span12
-					.row-fluid
+			.span12
+				.row-fluid
+					.span12
+						%h3= post.title
+				.row-fluid
+					-if !post.image_url(:large).nil?
+						.span3
+							= image_tag post.image_url(:large).to_s
+						.span9
+							= post.content.nil? ? post.content : post.content.html_safe
+					- else
 						.span12
-							%h3= post.title
-					.row-fluid
-						.span12
-							#contactdescription
-								.thumbnail.span6
-									= image_tag post.image_url(:large).to_s
-								= post.content.nil? ? post.content : post.content.html_safe
-							%br
-							%br
+							= post.content.nil? ? post.content : post.content.html_safe
