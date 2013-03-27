@@ -11,7 +11,7 @@
 						.span7
 							.thumbnail
 								= image_tag post.image_url(:large).to_s
-						.span2
+						.span5
 							= post.content.nil? ? post.content : post.content.html_safe
 					- else
 						.span12
