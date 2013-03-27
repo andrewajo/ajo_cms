@@ -8,9 +8,10 @@
 						%h3= post.title
 				.row-fluid
 					-if !post.image_url(:large).nil?
-						.span3
-							= image_tag post.image_url(:large).to_s
-						.span9
+						.span7
+							.thumbnail
+								= image_tag post.image_url(:large).to_s
+						.span2
 							= post.content.nil? ? post.content : post.content.html_safe
 					- else
 						.span12
