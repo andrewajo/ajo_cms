@@ -10,11 +10,17 @@
 				%span.btn.btn-mini.btn-danger Delete
 		.span11
 			.row-fluid
-				.span3
-					.thumbnail
-						= image_tag post.image_url(:thumb).to_s
-				.span9
-					%h4= post.title
-					%br
-					= post.content.html_safe
-	%br
+				.span12
+					.row-fluid
+						.span12
+							%h3= post.title
+					.row-fluid
+						-if !post.image_url(:large).nil?
+							.span7
+								.thumbnail
+									= image_tag post.image_url(:large).to_s
+							.span5
+								= post.content.nil? ? post.content : post.content.html_safe
+						- else
+							.span12
+								= post.content.nil? ? post.content : post.content.html_safe
